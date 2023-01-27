@@ -53,23 +53,16 @@
                             </h3>
 
                         </div>
-                        <?php
-                        if (isset($_SESSION["action_status"])) {
-                            echo $_SESSION["action_status"];
-                        }
-                        ?>
+
                         <!--begin::Form-->
                         <form id="kt_form_1" class="form" method="POST" action="./server/form/handleCreateProperty.php">
                             <div class="card-body">
+                                <?php
+                                include("./components/alertHandler.php");
+                                ?>
                                 <div class="form-group row">
 
-
-                                    <div class="col-lg-4">
-                                        <label>Property ID:</label>
-                                        <input name="property_id" type="number" class="form-control" placeholder="Enter contact number">
-                                        <span class="form-text text-muted">Please property number</span>
-                                    </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <label>Property Typology:</label>
                                         <select name="property_typology" class="form-control select2" id="kt_select2_2" name="param">
                                             <option value="">All</option>
@@ -85,7 +78,7 @@
 
                                         </select>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <label>Property Type:</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-solid">

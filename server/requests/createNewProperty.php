@@ -15,6 +15,8 @@ function CreateNewProperty(
     $property_bedroom_amount,
     $property_bathroom_amount
 ) {
+
+
     $mysqli = new mysqli("localhost", "root", "", "amron");
 
     // Check connection

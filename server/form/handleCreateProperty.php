@@ -6,11 +6,17 @@ include("../requests/createNewProperty.php");
 if (isset($_POST["createPropertySubmit"])) {
 
     $property_location_tags = "";
-    foreach (json_decode($_POST["property_location"], true)[0] as $param => $value) {
-        $property_location_tags = $property_location_tags . $value;
+
+    foreach (json_decode($_POST["property_location"], true) as $param => $value) {
     }
 
-    $property_id = $_POST["property_id"];
+    $tags = json_decode($_POST["property_location"], true);
+    $i = 0;
+    while ($i < count($tags)) {
+        $property_location_tags = $property_location_tags . $tags[$i]["value"] . "#";
+        $i++;
+    }
+
     $property_typology = $_POST["property_typology"];
     $property_type = $_POST["property_type"];
     $property_sale_price = $_POST["property_sale_price"];
@@ -19,6 +25,8 @@ if (isset($_POST["createPropertySubmit"])) {
     $property_rent_installment = $_POST["property_rent_installment"];
     $property_bedroom_amount = $_POST["property_bedroom_amount"];
     $property_bathroom_amount = $_POST["property_bathroom_amount"];
+
+    $property_location_tags = $property_location_tags;
 
     $request = CreateNewProperty(
         $property_location_tags,
@@ -31,10 +39,15 @@ if (isset($_POST["createPropertySubmit"])) {
         $property_bedroom_amount,
         $property_bathroom_amount
     );
-    echo "yes";
+
     if ($request === "Success") {
 
-        $_SESSION["action_status"] = "Success";
+        $_SESSION["action_success"] = "Property Uploaded Successfully";
+        header("Location: ../../?action=createProperty");
+    }
+    if ($request !== "Success") {
+
+        $_SESSION["action_fail"] = "Property Failed To Uploaded Successfully";
         header("Location: ../../?action=createProperty");
     }
 }

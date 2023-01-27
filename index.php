@@ -1243,7 +1243,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <?php
     }
-    if ($action === 'addPlot' || $action === 'createPaymentsProfile') {
+    if ($action === 'createPaymentsProfile') {
     ?>
       <script src="assets/js-mod/tagify.js"></script>
       <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
@@ -1315,6 +1315,16 @@ License: You must have a valid license purchased only from themeforest(the above
       <script src="assets/js-mod/tagify.js"></script>
       <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
       <script src="assets/js-mod/createPropertyValidation.js"></script>
+
+
+
+    <?php
+    }
+    if ($action === 'addPlot') {
+    ?>
+      <script src="assets/js-mod/tagify.js"></script>
+      <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
+      <script src="assets/js-mod/createPlotValidation.js"></script>
 
 
 

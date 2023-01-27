@@ -54,53 +54,54 @@
 
                         </div>
                         <!--begin::Form-->
-                        <form class="form">
+                        <form class="form" id="add_property_form" method="POST" action="./server/form/handleCreatePlot.php">
                             <div class="card-body">
+                                <?php
+                                include("./components/alertHandler.php");
+                                ?>
                                 <div class="form-group row">
-
-
                                     <div class="col-lg-6">
                                         <label>Plot Number:</label>
-                                        <input type="number" class="form-control" placeholder="Enter contact number">
+                                        <input name="plot_number" type="number" class="form-control" placeholder="Enter plot number">
                                         <span class="form-text text-muted">Please plot number</span>
                                     </div>
                                     <div class="col-lg-6">
-                                        <label>Plot Type:</label>
-                                        <div class="radio-inline">
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="plot_type" checked="checked" value="2">
-                                                <span></span>
-                                                For Rent
-                                            </label>
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="plot_type" value="2">
-                                                <span></span>
-                                                For Sale
-                                            </label>
+                                        <label>Property house Typology:</label>
+                                        <select name="plot_house_typology" class="form-control select2" id="kt_select2_2" name="param">
+                                            <option value="">All</option>
+                                            <option value="1">2 Bedroom Detached Bungalow</option>
+                                            <option value="2">4 Bedroom with pent house</option>
+                                            <option value="3">4 Bedroom Semi-Detached Duplex</option>
+                                            <option value="4">5 Bedroom Detached Duplex</option>
+                                            <option value="5">2 Bedroom Detached with BQ</option>
+                                            <option value="6">3 Bedroom Semi-Detached Bungalow</option>
+                                            <option value="7">3 Bedroom Block Of Flat</option>
+                                            <option value="8">2 Bedroom Block Of Flat</option>
+                                            <option value="9">2 Bedroom Semi-Detached Bungalow</option>
 
-                                        </div>
-                                        <span class="form-text text-muted">Please select installment type</span>
+                                        </select>
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Selling Price:</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text">₦</span></div>
-                                            <input type="number" class="form-control" placeholder="Enter Selling Price" />
+                                            <input name="plot_sale_price" type="number" class="form-control" placeholder="Enter Selling Price" />
                                         </div>
                                         <span class="form-text text-muted">Please enter plot price</span>
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Plot lenght size:</label>
-                                        <input type="number" class="form-control" placeholder="Lenght">
+                                        <input name="plot_lenght" type="number" class="form-control" placeholder="Lenght">
                                         <span class="form-text text-muted">
                                             Enter lenght size</span>
                                     </div>
 
                                     <div class="col-lg-3">
                                         <label>Plot breadth Size:</label>
-                                        <input type="number" class="form-control" placeholder="Breadth">
+                                        <input name="plot_breadth" type="number" class="form-control" placeholder="Breadth">
                                         <span class="form-text text-muted">
                                             Enter breadth Size </span>
 
@@ -108,8 +109,10 @@
 
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <input id="kt_tagify_1" class="form-control tagify" name='tags' placeholder='type...' value='Lugbe, Abuja' />
+
+
+                                    <div class="col-lg-6"><label>Plot Location:</label>
+                                        <input name="plot_location" id="kt_tagify_1" class="form-control tagify" name='tags' placeholder='type...' value='Lugbe, Abuja' />
 
                                         <div class="mt-3">
                                             <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-sm btn-light-primary font-weight-bold">Remove tags</a>
@@ -120,44 +123,25 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <label>Property Location:</label>
-                                        <select class="form-control select2" id="kt_select2_1" name="param">
-                                            <option value="AK">Phase 1</option>
-                                            <option value="HI">Phase 2</option>
-                                            <option value="CA">Phase 3</option>
-                                            <option value="NV">Phase 4</option>
-                                            <option value="OR">Phase 5</option>
-                                            <option value="WA">Phase 6</option>
-                                            <option value="AZ">Phase 7</option>
-                                            <option value="AZ">Not in Phase</option>
-
+                                        <label>Property Phase:</label>
+                                        <select name="plot_phase" class="form-control select2" id="kt_select2_1" name="param">
+                                            <option value="1">Phase 1</option>
+                                            <option value="2">Phase 2</option>
+                                            <option value="3">Phase 3</option>
+                                            <option value="4">Phase 4</option>
+                                            <option value="5">Phase 5</option>
+                                            <option value="6">Phase 6</option>
+                                            <option value="7">Phase 7</option>
+                                            <option value="0">Not in Phase</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Payment Installment:</label>
-                                        <div class="radio-inline">
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" checked="checked" value="2">
-                                                <span></span>
-                                                Monthly
-                                            </label>
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" value="2">
-                                                <span></span>
-                                                Trimonthly
-                                            </label>
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" value="2">
-                                                <span></span>
-                                                Semianually
-                                            </label>
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" value="2">
-                                                <span></span>
-                                                Anually
-                                            </label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend"><span class="input-group-text"></span></div>
+                                            <input name="plot_installment" type="text" class="form-control" placeholder="Enter Plot Installment" />
                                         </div>
                                         <span class="form-text text-muted">Please select installment type</span>
                                     </div>
@@ -173,7 +157,8 @@
                                 <div class="row">
                                     <div class="col-lg-4"></div>
                                     <div class="col-lg-8">
-                                        <button type="reset" class="btn btn-primary mr-2">Submit</button>
+                                        <input type="submit" name="createPlotSubmit" class="btn btn-primary mr-2" value="Submit">
+
                                         <button type="reset" class="btn btn-secondary">Cancel</button>
                                     </div>
                                 </div>
