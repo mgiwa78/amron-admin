@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 ?>
 <!DOCTYPE html>
 <!--
@@ -58,7 +60,8 @@ License: You must have a valid license purchased only from themeforest(the above
   <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
     <!--begin::Logo-->
     <a href="#">
-      <img alt="Logo" src="assets/media/logos/logo-light.png" />
+      <img alt="Logo" style="width: 180px; margin-left: -39px" src="assets/media/AMRON Global Services/Without Background/Horizontal Logo/AMRON Horizontal White.png" />
+
     </a>
     <!--end::Logo-->
 
@@ -1247,13 +1250,14 @@ License: You must have a valid license purchased only from themeforest(the above
     ?>
       <script src="assets/js-mod/tagify.js"></script>
       <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
-      <script src="assets/js/pages/crud/forms/validation/form-controls.js?v=7.0.6"></script>
+      <script src="assets/js-mod/createPaymentProfileValidation.js"></script>
 
     <?php
     }
     if ($action === 'addTenants') {
     ?>
       <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
+      <script src="assets/js-mod/createTenantProfileValidation.js"></script>
 
 
 
@@ -1299,7 +1303,7 @@ License: You must have a valid license purchased only from themeforest(the above
       <script src="assets/js-mod/tagify.js"></script>
       <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
       <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js?v=7.0.6"></script>
-      <script src="assets/js/pages/crud/forms/validation/form-controls.js?v=7.0.6"></script>
+      <script src="assets/js-mod/recordRaymentValidation.js"></script>
 
     <?php
     }
@@ -1325,6 +1329,15 @@ License: You must have a valid license purchased only from themeforest(the above
       <script src="assets/js-mod/tagify.js"></script>
       <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
       <script src="assets/js-mod/createPlotValidation.js"></script>
+
+
+
+    <?php
+    }
+    if ($action === 'addUser') {
+    ?>
+
+      <script src="assets/js-mod/createUserValidation.js"></script>
 
 
 

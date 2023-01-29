@@ -58,36 +58,37 @@
 
                         </div>
                         <!--begin::Form-->
-                        <form class="form">
+                        <form class="form" id="tenant_profile_form" method="POST" action="./server/form/handleCreateTenantProfile.php">
                             <div class="card-body">
+                                <?php
+                                include("./components/alertHandler.php");
+                                ?>
                                 <div class="form-group row">
-
-
                                     <div class="col-lg-3">
                                         <label>Tenant ID:</label>
-                                        <input type="number" class="form-control" placeholder="Enter contact number">
+                                        <input name="tenant_id" type="text" value="<?php echo uniqid('Tid'); ?>" class="form-control" placeholder="Enter Tenant ID">
                                         <span class="form-text text-muted">Please tenant ID</span>
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Tenant First Name:</label>
-                                        <input type="text" class="form-control" placeholder="Enter First Name">
+                                        <input name="tenant_f_name" type="text" class="form-control" placeholder="Enter First Name">
                                         <span class=" form-text text-muted">Please Enter First Name</span>
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Tenant Last Name:</label>
-                                        <input type="text" class="form-control" placeholder="Enter Last Name">
+                                        <input name="tenant_l_name" type="text" class="form-control" placeholder="Enter Last Name">
                                         <span class=" form-text text-muted">Please Enter Last Name</span>
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Property Type:</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="property_type" checked="checked" value="2">
+                                                <input type="radio" name="tenant_property_type" checked="checked" value="1">
                                                 <span></span>
                                                 Rent
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="property_type" value="2">
+                                                <input type="radio" name="tenant_property_type" value="2">
                                                 <span></span>
                                                 Full Ownership
                                             </label>
@@ -104,7 +105,7 @@
                                         <label>Rent Amount:</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text">₦</span></div>
-                                            <input type="number" class="form-control" placeholder="Enter Rent Price" />
+                                            <input name="tenant_rent_amount" type="number" class="form-control" placeholder="Enter Rent Price" />
                                         </div>
                                         <span class="form-text text-muted">Please enter rent price, if rent</span>
 
@@ -113,22 +114,22 @@
                                         <label>Rent Installment:</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" checked="checked" value="2">
+                                                <input type="radio" name="rental_installment" checked="checked" value="2">
                                                 <span></span>
                                                 Monthly
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" value="2">
+                                                <input type="radio" name="rental_installment" value="2">
                                                 <span></span>
                                                 Trimonthly
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" value="2">
+                                                <input type="radio" name="rental_installment" value="2">
                                                 <span></span>
                                                 Semianually
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" value="2">
+                                                <input type="radio" name="rental_installment" value="2">
                                                 <span></span>
                                                 Anually
                                             </label>
@@ -141,29 +142,25 @@
                                     <div class="col-lg-6"><label>Property Location:</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i class="la la-map-marker icon-lg"></i></span></div>
-                                            <input type="text" class="form-control" placeholder="Enter Property Location" />
+                                            <input name="property_location" type="text" class="form-control" placeholder="Enter Property Location" />
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Property Phase:</label>
-                                        <select class="form-control select2" id="kt_select2_1" name="param">
-                                            <option value="AK">Phase 1</option>
-                                            <option value="HI">Phase 2</option>
-                                            <option value="CA">Phase 3</option>
-                                            <option value="NV">Phase 4</option>
-                                            <option value="OR">Phase 5</option>
-                                            <option value="WA">Phase 6</option>
-                                            <option value="AZ">Phase 7</option>
-                                            <option value="AZ">Not in Phase</option>
+                                        <select name="property_phase" class="form-control select2" id="kt_select2_1" name="param">
+                                            <option value="1">Phase 1</option>
+                                            <option value="2">Phase 2</option>
+                                            <option value="3">Phase 3</option>
+                                            <option value="4">Phase 4</option>
+                                            <option value="5">Phase 5</option>
+                                            <option value="6">Phase 6</option>
+                                            <option value="7">Phase 7</option>
+                                            <option value="8">Not in Phase</option>
 
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
 
-
-
-                                </div>
 
                                 <!-- begin: Example Code-->
 
@@ -173,7 +170,8 @@
                                 <div class="row">
                                     <div class="col-lg-4"></div>
                                     <div class="col-lg-8">
-                                        <button type="reset" class="btn btn-primary mr-2">Submit</button>
+                                        <input type="submit" name="createTenantProfileSubmit" class="btn btn-primary mr-2" value="Submit">
+
                                         <button type="reset" class="btn btn-secondary">Cancel</button>
                                     </div>
                                 </div>

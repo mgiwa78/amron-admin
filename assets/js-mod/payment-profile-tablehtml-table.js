@@ -65,16 +65,12 @@ var KTDatatableHtmlTableDemo = (function () {
           template: function (row) {
             var status = {
               1: {
-                title: "Disabled",
+                title: "Active",
                 state: "danger",
               },
-              2: {
-                title: "Active",
+              0: {
+                title: "Diabled",
                 state: "primary",
-              },
-              3: {
-                title: "Active",
-                state: "success",
               },
             };
             return (

@@ -31,6 +31,7 @@
              <!--begin::Toolbar-->
              <?php
                 include("./components/signInTime.php");
+                include("./server/get/fetchDashBoardData.php");
                 ?>
              <!--end::Toolbar-->
          </div>
@@ -60,7 +61,7 @@
                                          <path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z" fill="#000000" />
                                      </g>
                                  </svg><!--end::Svg Icon--></span>
-                             <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">24</span>
+                             <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"><?php echo FetchRentCount() ?></span>
                              <span class="font-weight-bold text-muted font-size-lg">All properties available for Rent</span>
                          </div>
                          <!--end::Body-->
@@ -80,7 +81,7 @@
                                          <path d="M9.85714286,6.92857143 C9.85714286,8.54730513 8.5469533,9.85714286 6.93006028,9.85714286 C5.31316726,9.85714286 4,8.54730513 4,6.92857143 C4,5.30983773 5.31316726,4 6.93006028,4 C8.5469533,4 9.85714286,5.30983773 9.85714286,6.92857143 Z M20,17.0714286 C20,18.6901623 18.6898104,20 17.0729174,20 C15.4560244,20 14.1428571,18.6901623 14.1428571,17.0714286 C14.1428571,15.4497247 15.4560244,14.1428571 17.0729174,14.1428571 C18.6898104,14.1428571 20,15.4497247 20,17.0714286 Z" fill="#000000" opacity="0.3" />
                                      </g>
                                  </svg><!--end::Svg Icon--></span>
-                             <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">12</span>
+                             <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"><?php echo FetchSaleCount() ?></span>
                              <span class="font-weight-bold text-muted font-size-lg">All properties available for sale</span>
                          </div>
                          <!--end::Body-->
@@ -98,7 +99,7 @@
                                          <path d="M18.5,6 C19.3284271,6 20,6.67157288 20,7.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 C17.6715729,20 17,19.3284271 17,18.5 L17,7.5 C17,6.67157288 17.6715729,6 18.5,6 Z M12.5,11 C13.3284271,11 14,11.6715729 14,12.5 L14,18.5 C14,19.3284271 13.3284271,20 12.5,20 C11.6715729,20 11,19.3284271 11,18.5 L11,12.5 C11,11.6715729 11.6715729,11 12.5,11 Z M6.5,15 C7.32842712,15 8,15.6715729 8,16.5 L8,18.5 C8,19.3284271 7.32842712,20 6.5,20 C5.67157288,20 5,19.3284271 5,18.5 L5,16.5 C5,15.6715729 5.67157288,15 6.5,15 Z" fill="#000000" />
                                      </g>
                                  </svg><!--end::Svg Icon--></span>
-                             <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">11</span>
+                             <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"><?php echo FetchPropertyCount() ?></span>
                              <span class="font-weight-bold text-muted font-size-lg">All properties across phases</span>
                          </div>
                          <!--end::Body-->

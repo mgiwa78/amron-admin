@@ -58,24 +58,27 @@
 
                         </div>
                         <!--begin::Form-->
-                        <form class="form">
+                        <form class="form" id="payment_profile_form" method="POST" action="./server/form/handleCreatePaymentProfile.php">
                             <div class="card-body">
+                                <?php
+                                include("./components/alertHandler.php");
+                                ?>
                                 <div class="form-group row">
 
 
                                     <div class="col-lg-4">
                                         <label>Client Payment ID:</label>
-                                        <input type="number" class="form-control" placeholder="Enter payment ID">
+                                        <input name="client_payment_id" type="number" class="form-control" placeholder="Enter payment ID">
                                         <span class="form-text text-muted">Please enter payment ID</span>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Client First Name:</label>
-                                        <input type="text" class="form-control" placeholder="Enter client first name">
+                                        <input name="client_f_name" type="text" class="form-control" placeholder="Enter client first name">
                                         <span class="form-text text-muted">Please enter client first name</span>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Client Last Name:</label>
-                                        <input type="text" class="form-control" placeholder="Enter client lirst name">
+                                        <input name="client_l_name" type="text" class="form-control" placeholder="Enter client lirst name">
                                         <span class="form-text text-muted">Please enter client last name</span>
                                     </div>
 
@@ -85,7 +88,7 @@
                                         <label>Amont To be Paid:</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text">₦</span></div>
-                                            <input type="number" class="form-control" placeholder="Enter amont paid" />
+                                            <input name="amount_to_pay" type="number" class="form-control" placeholder="Enter amont paid" />
                                         </div>
                                         <span class="form-text text-muted">Please enter total amont paid</span>
                                     </div>
@@ -94,22 +97,22 @@
                                         <label>Payment Type:</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" checked="checked" value="2">
+                                                <input type="radio" name="payment_type" checked="checked" value="0">
                                                 <span></span>
                                                 Service Charge
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" value="2">
+                                                <input type="radio" name="payment_type" value="1">
                                                 <span></span>
                                                 Property
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" value="2">
+                                                <input type="radio" name="payment_type" value="2">
                                                 <span></span>
                                                 Plot
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="example_2" value="2">
+                                                <input type="radio" name="payment_type" value="3">
                                                 <span></span>
                                                 Rent
                                             </label>
@@ -121,7 +124,7 @@
                                     <div class="col-lg-6">
                                         <label>Profile Property Location:</label>
 
-                                        <input id="kt_tagify_1" class="form-control tagify" name='tags' placeholder='type...' value='Lugbe, Abuja' />
+                                        <input name="property_location" id="kt_tagify_1" class="form-control tagify" name='tags' placeholder='type...' value='Lugbe, Abuja' />
 
                                         <div class="mt-3">
                                             <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-sm btn-light-primary font-weight-bold">Remove tags</a>
@@ -133,15 +136,15 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Profile Property Phase:</label>
-                                        <select class="form-control select2" id="kt_select2_1" name="param">
-                                            <option value="AK">Phase 1</option>
-                                            <option value="HI">Phase 2</option>
-                                            <option value="CA">Phase 3</option>
-                                            <option value="NV">Phase 4</option>
-                                            <option value="OR">Phase 5</option>
-                                            <option value="WA">Phase 6</option>
-                                            <option value="AZ">Phase 7</option>
-                                            <option value="AZ">Not in Phase</option>
+                                        <select name="property_phase" class="form-control select2" id="kt_select2_1" name="param">
+                                            <option value="1">Phase 1</option>
+                                            <option value="2">Phase 2</option>
+                                            <option value="3">Phase 3</option>
+                                            <option value="4">Phase 4</option>
+                                            <option value="5">Phase 5</option>
+                                            <option value="6">Phase 6</option>
+                                            <option value="7">Phase 7</option>
+                                            <option value="0">Not in Phase</option>
 
                                         </select>
                                     </div>
@@ -156,7 +159,8 @@
                                 <div class="row">
                                     <div class="col-lg-4"></div>
                                     <div class="col-lg-8">
-                                        <button type="reset" class="btn btn-primary mr-2">Submit</button>
+                                        <input type="submit" name="createPaymentProfileSubmit" class="btn btn-primary mr-2" value="Submit">
+
                                         <button type="reset" class="btn btn-secondary">Cancel</button>
                                     </div>
                                 </div>

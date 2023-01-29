@@ -34,6 +34,9 @@
             <div class="d-flex align-items-center">
                 <?php
                 include("./components/signInTime.php");
+                include("./server/get/fetchPayments.php");
+
+                $all_payments_ids = FetchPaymentIDs();
                 ?>
                 <!--end::Dropdown-->
             </div>
@@ -139,128 +142,34 @@
                                 <th title="Field #3">Description</th>
                                 <th title="Field #4">Amount</th>
                                 <th title="Field #5">Date</th>
+                                <th title="Field #6">Due</th>
                                 <th title="Field #7">Status</th>
                                 <th title="Field #8">Type</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>0006-3629</td>
-                                <td>Land Rover</td>
-                                <td>Range Rover</td>
-                                <td>₦22672.60</td>
-                                <td>2016-11-28</td>
-                                <td class="text-right">3</td>
-                                <td class="text-right">3</td>
-                            </tr>
-                            <tr>
-                                <td>66403-315</td>
-                                <td>GMC</td>
-                                <td>Jimmy</td>
-                                <td>₦55141.29</td>
-                                <td>2017-04-29</td>
-                                <td class="text-right">3</td>
-                                <td class="text-right">2</td>
-                            </tr>
-                            <tr>
-                                <td>54868-5055</td>
-                                <td>Ford</td>
-                                <td>Club Wagon</td>
-                                <td>₦70991.52</td>
-                                <td>2017-03-16</td>
-                                <td class="text-right">6</td>
-                                <td class="text-right">1</td>
-                            </tr>
-                            <tr>
-                                <td>44924-112</td>
-                                <td>GMC</td>
-                                <td>Envoy</td>
-                                <td>₦42615.31</td>
-                                <td>2016-09-04</td>
-                                <td class="text-right">2</td>
-                                <td class="text-right">1</td>
-                            </tr>
-                            <tr>
-                                <td>0378-0357</td>
-                                <td>Saab</td>
-                                <td>9-5</td>
-                                <td>₦74919.63</td>
-                                <td>2017-09-21</td>
-                                <td class="text-right">4</td>
-                                <td class="text-right">2</td>
-                            </tr>
-                            <tr>
-                                <td>0363-0590</td>
-                                <td>Suzuki</td>
-                                <td>Grand Vitara</td>
-                                <td>₦72908.80</td>
-                                <td>2017-04-03</td>
-                                <td class="text-right">5</td>
-                                <td class="text-right">1</td>
-                            </tr>
-                            <tr>
-                                <td>35356-778</td>
-                                <td>Dodge</td>
-                                <td>Ram 2500</td>
-                                <td>₦13569.00</td>
-                                <td>2016-03-22</td>
-                                <td class="text-right">5</td>
-                                <td class="text-right">1</td>
-                            </tr>
-                            <tr>
-                                <td>48951-3040</td>
-                                <td>Mitsubishi</td>
-                                <td>Eclipse</td>
-                                <td>₦22471.73</td>
-                                <td>2016-04-17</td>
-                                <td class="text-right">1</td>
-                                <td class="text-right">2</td>
-                            </tr>
-                            <tr>
-                                <td>0487-9801</td>
-                                <td>Pontiac</td>
-                                <td>Green</td>
-                                <td>₦43149.39</td>
-                                <td>2016-05-27</td>
-                                <td class="text-right">4</td>
-                                <td class="text-right">1</td>
-                            </tr>
-                            <tr>
-                                <td>54753-003</td>
-                                <td>Audi</td>
-                                <td>Turquoise</td>
-                                <td>₦39286.74</td>
-                                <td>2016-07-23</td>
-                                <td class="text-right">5</td>
-                                <td class="text-right">2</td>
-                            </tr>
-                            <tr>
-                                <td>34460-6006</td>
-                                <td>Audi</td>
-                                <td>Mauv</td>
-                                <td>₦47394.02</td>
-                                <td>2016-06-21</td>
-                                <td class="text-right">3</td>
-                                <td class="text-right">3</td>
-                            </tr>
-                            <tr>
-                                <td>62802-106</td>
-                                <td>GMC</td>
-                                <td>Teal</td>
-                                <td>₦47469.52</td>
-                                <td>2016-05-06</td>
-                                <td class="text-right">3</td>
-                                <td class="text-right">1</td>
-                            </tr>
-                            <tr>
-                                <td>43269-664</td>
-                                <td>Buick</td>
-                                <td>Orange</td>
-                                <td>₦94980.73</td>
-                                <td>2017-08-17</td>
-                                <td class="text-right">3</td>
-                                <td class="text-right">1</td>
-                            </tr>
+                            <?php
+                            foreach ($all_payments_ids as $key => $paymentsID) {
+                                # code...
+                                $paymentData = FetchPaymentByID($paymentsID[0]);
+                                // echo substr($propertyData["property_id"], 3,
+                                //     strlen($propertyData["property_id"])
+                                // );
+                            ?>
+                                <tr>
+                                    <td><?php echo $paymentData["payment_id"] ?></td>
+                                    <td><?php echo $paymentData["client_l_name"] . " " . $paymentData["client_f_name"] ?></td>
+                                    <td><?php echo $paymentData["payment_description"] ?></td>
+                                    <td><?php echo $paymentData["amount_paid"] ?></td>
+                                    <td><?php echo $paymentData["payment_date"] ?></td>
+                                    <td><?php echo $paymentData["amount_due"] ?></td>
+                                    <td class="text-right"><?php echo $paymentData["amount_due"] === "0" ? 2 : 1 ?></td>
+                                    <td class="text-right"><?php echo $paymentData["payment_type"] ?></td>
+                                </tr>
+                            <?php
+                            } ?>
+
+
 
                         </tbody>
                     </table>

@@ -58,19 +58,27 @@
 
                         </div>
                         <!--begin::Form-->
-                        <form class="form">
+                        <form class="form" id="add_new_user" method="POST" action="./server/form/handleCreateNewUser.php">
                             <div class="card-body">
+                                <?php
+                                include("./components/alertHandler.php");
+                                ?>
                                 <div class="form-group row">
 
 
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <label>User ID:</label>
-                                        <input type="number" class="form-control" placeholder="Enter contact number">
+                                        <input value="<?php echo uniqid('Uid'); ?>" name="user_ID" type="text" class="form-control" placeholder="Enter User ID number">
                                         <span class="form-text text-muted">Please Enter User ID</span>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
+                                        <label>User Position:</label>
+                                        <input name="user_position" type="text" class="form-control" placeholder="Enter Position">
+                                        <span class=" form-text text-muted">Please Enter Position</span>
+                                    </div>
+                                    <div class="col-lg-4">
                                         <label>User First Name:</label>
-                                        <input type="text" class="form-control" placeholder="Enter First Name">
+                                        <input name="user_f_name" type="text" class="form-control" placeholder="Enter First Name">
                                         <span class=" form-text text-muted">Please Enter First Name</span>
                                     </div>
 
@@ -79,26 +87,31 @@
 
 
                                 <div class="form-group row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <label>User Last Name:</label>
-                                        <input type="text" class="form-control" placeholder="Enter Last Name">
+                                        <input name="user_l_name" type="text" class="form-control" placeholder="Enter Last Name">
                                         <span class=" form-text text-muted">Please Enter Last Name</span>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
+                                        <label>User Email:</label>
+                                        <input name="user_email" type="email" class="form-control" placeholder="Enter User Email">
+                                        <span class=" form-text text-muted">Please User Email</span>
+                                    </div>
+                                    <div class="col-lg-4">
                                         <label>Account Type:</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="property_type" checked="checked" value="2">
+                                                <input type="radio" name="user_type" checked="checked" value="1">
                                                 <span></span>
                                                 Admin
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="property_type" value="2">
+                                                <input type="radio" name="user_type" value="2">
                                                 <span></span>
                                                 Editor
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="property_type" value="2">
+                                                <input type="radio" name="user_type" value="0">
                                                 <span></span>
                                                 No Permissions
                                             </label>
@@ -119,7 +132,8 @@
                                 <div class="row">
                                     <div class="col-lg-4"></div>
                                     <div class="col-lg-8">
-                                        <button type="reset" class="btn btn-primary mr-2">Submit</button>
+                                        <input type="submit" name="createNewUserSubmit" class="btn btn-primary mr-2" value="Submit">
+
                                         <button type="reset" class="btn btn-secondary">Cancel</button>
                                     </div>
                                 </div>

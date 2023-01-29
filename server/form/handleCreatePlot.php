@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../requests/createNewplot.php");
+include("../post/NewPlotRequest.php");
 echo "ss";
 
 if (isset($_POST["createPlotSubmit"])) {

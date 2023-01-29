@@ -1,0 +1,33 @@
+<?php
+
+function FetchUserProfileIDs()
+{
+
+    $mysqli = new mysqli("localhost", "root", "", "amron");
+
+    $query = "SELECT `user_id` FROM `users` WHERE 1";
+
+    $user_IDs = mysqli_fetch_all(mysqli_query($mysqli, $query));
+    return $user_IDs;
+}
+function FetchUserProfileByID($user_id)
+{
+
+    $mysqli = new mysqli("localhost", "root", "", "amron");
+
+    $query = "SELECT 
+                `user_id`, 
+                `user_f_name`, 
+                `user_l_name`, 
+                `user_type_id`, 
+                `user_email`, 
+                `user_position`,
+                `user_last_login`,
+                `user_position`
+            FROM 
+             `users` WHERE user_id='$user_id'";
+
+    $userProfile = mysqli_fetch_assoc(mysqli_query($mysqli, $query));
+
+    return $userProfile;
+}

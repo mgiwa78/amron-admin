@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../requests/createNewProperty.php");
+include("../post/NewPropertyRequest.php");
 
 
 if (isset($_POST["createPropertySubmit"])) {

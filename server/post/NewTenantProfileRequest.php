@@ -1,0 +1,47 @@
+<?php
+global  $error;
+$GLOBALS["error"] = "";
+
+
+
+function CreateTenantProfile(
+    $tenant_id,
+    $tenant_f_name,
+    $tenant_l_name,
+    $tenant_property_type,
+    $tenant_rent_amount,
+    $rental_installment,
+    $property_location,
+) {
+
+
+    $mysqli = new mysqli("localhost", "root", "", "amron");
+
+    // Check connection
+    $query = "INSERT INTO 
+                `tenant`(
+                    `tenant_id`, 
+                    `tenant_f_name`, 
+                    `tenant_l_name`, 
+                    `tenant_type_id`, 
+                    `tenant_rental_amount`, 
+                    `tenant_rental_installment`, 
+                    `tenant_location`
+                    ) 
+                VALUES (
+                    '$tenant_id',
+                    '$tenant_f_name',
+                    '$tenant_l_name',
+                    '$tenant_property_type',
+                    '$tenant_rent_amount',
+                    '$rental_installment',
+                    '$property_location')";
+
+    if (mysqli_query($mysqli, $query)) {
+    } else {
+        $GLOBALS["error"]  = "Error Occured";
+    }
+
+    if ($GLOBALS["error"]  === "")
+        return "Success";
+}
