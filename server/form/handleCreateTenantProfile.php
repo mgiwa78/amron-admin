@@ -1,7 +1,6 @@
 <?php
 session_start();
 include("../post/NewTenantProfileRequest.php");
-echo "ss";
 
 if (isset($_POST["createTenantProfileSubmit"])) {
 
@@ -17,6 +16,7 @@ if (isset($_POST["createTenantProfileSubmit"])) {
 
     $tenant_id = $_POST["tenant_id"];
     $tenant_f_name = $_POST["tenant_f_name"];
+    $property_phase = $_POST["property_phase"];
     $tenant_l_name = $_POST["tenant_l_name"];
     $tenant_property_type = $_POST["tenant_property_type"];
     $tenant_rent_amount = "";
@@ -33,6 +33,7 @@ if (isset($_POST["createTenantProfileSubmit"])) {
     $request = CreateTenantProfile(
         $tenant_id,
         $tenant_f_name,
+        $property_phase,
         $tenant_l_name,
         $tenant_property_type,
         $tenant_rent_amount,

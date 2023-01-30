@@ -118,9 +118,9 @@
                                             <label class="mr-3 mb-0 d-none d-md-block">Type:</label>
                                             <select class="form-control" id="kt_datatable_search_type">
                                                 <option value="">All</option>
-                                                <option value="1">Unavailable</option>
-                                                <option value="2">Rent</option>
-                                                <option value="3">Sale</option>
+                                                <option value="0">Unavailable</option>
+                                                <option value="1">Rent</option>
+                                                <option value="2">Sale</option>
                                             </select>
                                         </div>
                                     </div>

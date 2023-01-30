@@ -89,16 +89,12 @@ var KTDatatableHtmlTableDemo = (function () {
           template: function (row) {
             var status = {
               1: {
-                title: "Online",
+                title: "Available",
                 state: "danger",
               },
               2: {
-                title: "Retail",
+                title: "Unavailable",
                 state: "primary",
-              },
-              3: {
-                title: "Direct",
-                state: "success",
               },
             };
             return (

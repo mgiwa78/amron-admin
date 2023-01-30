@@ -1,13 +1,10 @@
 <?php
 session_start();
 include("../post/NewUserRequest.php");
-echo "ss";
 
 if (isset($_POST["createNewUserSubmit"])) {
 
     // $plot_location_tags = "";
-
-
     // $tags = json_decode($_POST["property_location"], true);
     // $i = 0;
     // while ($i < count($tags)) {
@@ -21,6 +18,7 @@ if (isset($_POST["createNewUserSubmit"])) {
     $user_type = $_POST["user_type"];
     $user_email = $_POST["user_email"];
     $user_position = $_POST["user_position"];
+    $user_password = $_POST["user_password"];
 
 
     $request = CreateNewUser(
@@ -29,17 +27,23 @@ if (isset($_POST["createNewUserSubmit"])) {
         $user_l_name,
         $user_type,
         $user_email,
-        $user_position
+        $user_position,
+        $user_password
     );
+    echo $request;
 
     if ($request === "Success") {
 
         $_SESSION["action_success"] = "User Created Successfully";
         header("Location: ../../?action=addUser");
     }
-    if ($request !== "Success") {
+    if ($request === "Error") {
 
         $_SESSION["action_fail"] = "User Failed To Create Successfully";
+        header("Location: ../../?action=addUser");
+    }
+    if ($request === "Email Exists") {
+        $_SESSION["action_fail"] = "Email Already Exists, Use a different email";
         header("Location: ../../?action=addUser");
     }
 }

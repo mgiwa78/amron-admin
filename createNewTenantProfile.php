@@ -155,7 +155,7 @@
                                             <option value="5">Phase 5</option>
                                             <option value="6">Phase 6</option>
                                             <option value="7">Phase 7</option>
-                                            <option value="8">Not in Phase</option>
+                                            <option value="0">Not in Phase</option>
 
                                         </select>
                                     </div>

@@ -5,9 +5,6 @@ FormValidation.formValidation(document.getElementById("payment_profile_form"), {
         notEmpty: {
           message: "Client Payment ID is required",
         },
-        digits: {
-          message: "The value is not a valid number",
-        },
       },
     },
 

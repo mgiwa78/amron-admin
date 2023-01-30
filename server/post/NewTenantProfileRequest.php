@@ -7,6 +7,7 @@ $GLOBALS["error"] = "";
 function CreateTenantProfile(
     $tenant_id,
     $tenant_f_name,
+    $property_phase,
     $tenant_l_name,
     $tenant_property_type,
     $tenant_rent_amount,
@@ -22,6 +23,7 @@ function CreateTenantProfile(
                 `tenant`(
                     `tenant_id`, 
                     `tenant_f_name`, 
+                    `tenant_phase_id`, 
                     `tenant_l_name`, 
                     `tenant_type_id`, 
                     `tenant_rental_amount`, 
@@ -31,6 +33,7 @@ function CreateTenantProfile(
                 VALUES (
                     '$tenant_id',
                     '$tenant_f_name',
+                    '$property_phase',
                     '$tenant_l_name',
                     '$tenant_property_type',
                     '$tenant_rent_amount',

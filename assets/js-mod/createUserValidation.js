@@ -37,6 +37,16 @@ FormValidation.formValidation(document.getElementById("add_new_user"), {
         },
       },
     },
+    user_password: {
+      validators: {
+        notEmpty: {
+          message: "User Password is required",
+        },
+        password: {
+          message: "Invalid Password",
+        },
+      },
+    },
   },
 
   plugins: {

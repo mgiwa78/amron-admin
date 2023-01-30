@@ -123,6 +123,13 @@
 
 
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Password:</label>
+                                        <input name="user_password" type="Password" class="form-control" placeholder="Enter User Password">
+                                        <span class=" form-text text-muted">Please user default password</span>
+                                    </div>
+                                </div>
 
                                 <!-- begin: Example Code-->
 

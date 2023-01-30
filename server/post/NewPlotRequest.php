@@ -5,7 +5,6 @@ $GLOBALS["error"] = "";
 
 
 function CreateNewPlot(
-    $plot_number,
     $plot_house_typology,
     $plot_sale_price,
     $plot_phase,
@@ -20,21 +19,23 @@ function CreateNewPlot(
     // Check connection
     $query = "INSERT INTO 
                 `plots`(
-                    `plot_number`, 
                     `plot_size`, 
                     `plot_phase`, 
                     `plot_location`, 
                     `plot_typology`, 
                     `plot_price`,
-                    `plot_installment`) 
+                    `plot_installment`,
+                    `plot_status`
+                    ) 
                 VALUES (
-                    '$plot_number',
                     '$plot_size',
                     '$plot_phase',
                     '$plot_location_tags',
                     '$plot_house_typology',
                     '$plot_sale_price',
-                    '$plot_installment')";
+                    '$plot_installment',
+                    '1'
+                    )";
 
     if (mysqli_query($mysqli, $query)) {
     } else {

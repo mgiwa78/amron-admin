@@ -23,7 +23,7 @@ function FetchPlotByID($plot_id)
     `plot_phase`, 
     `plot_size`, 
     `plot_number`, 
-    `plot_installment` 
+    `plot_installment`,
     `plot_status` 
     FROM 
     `plots` 

@@ -115,10 +115,11 @@
                                             </td>
                                             <td>
                                                 <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
-                                                    07:12
+                                                    <?php echo $UserData["user_last_login"] ? $UserData["user_last_login"] : "No Login Yet" ?>
+
                                                 </span>
                                                 <span class="text-muted font-weight-bold">
-                                                    9 days ago
+
                                                 </span>
                                             </td>
                                             <td>

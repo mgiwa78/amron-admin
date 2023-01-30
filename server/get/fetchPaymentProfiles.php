@@ -25,10 +25,10 @@ function FetchPaymentProfileByID($payment_id)
                 `profile_id`,
                 `amount_paid`,
                 `profile_status`,
-                `profile_description` 
+                `profile_description`
             FROM 
             `payment_profiles` 
-            WHERE client_payment_id=$payment_id ";
+            WHERE client_payment_id='$payment_id' ";
     $paymenyProfile = mysqli_fetch_assoc(mysqli_query($mysqli, $query));
 
     return $paymenyProfile;

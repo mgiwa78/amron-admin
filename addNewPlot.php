@@ -61,9 +61,12 @@
                                 ?>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
-                                        <label>Plot Number:</label>
-                                        <input name="plot_number" type="number" class="form-control" placeholder="Enter plot number">
-                                        <span class="form-text text-muted">Please plot number</span>
+                                        <label>Payment Installment:</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend"><span class="input-group-text"></span></div>
+                                            <input name="plot_installment" type="text" class="form-control" placeholder="Enter Plot Installment" />
+                                        </div>
+                                        <span class="form-text text-muted">Please select installment type</span>
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Property house Typology:</label>
@@ -137,14 +140,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Payment Installment:</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend"><span class="input-group-text"></span></div>
-                                            <input name="plot_installment" type="text" class="form-control" placeholder="Enter Plot Installment" />
-                                        </div>
-                                        <span class="form-text text-muted">Please select installment type</span>
-                                    </div>
+
 
 
                                 </div>

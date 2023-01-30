@@ -68,7 +68,7 @@
 
                                     <div class="col-lg-4">
                                         <label>Client Payment ID:</label>
-                                        <input name="client_payment_id" type="number" class="form-control" placeholder="Enter payment ID">
+                                        <input name="client_payment_id" type="text" value="<?php echo uniqid('PPid'); ?>" class="form-control" placeholder="Enter payment ID">
                                         <span class="form-text text-muted">Please enter payment ID</span>
                                     </div>
                                     <div class="col-lg-4">
@@ -97,7 +97,7 @@
                                         <label>Payment Type:</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="payment_type" checked="checked" value="0">
+                                                <input type="radio" name="payment_type" value="0">
                                                 <span></span>
                                                 Service Charge
                                             </label>

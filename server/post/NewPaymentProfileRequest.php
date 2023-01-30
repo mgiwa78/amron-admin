@@ -26,7 +26,8 @@ function CreatePaymentProfile(
                     `amount_to_pay`, 
                     `property_phase`, 
                     `payment_type`, 
-                    `plot_location_tags`
+                    `plot_location_tags`,
+                    `profile_status`
                     ) 
                 VALUES (
                     '$client_payment_id',
@@ -35,7 +36,9 @@ function CreatePaymentProfile(
                     '$amount_to_pay',
                     '$property_phase',
                     '$payment_type',
-                    '$plot_location_tags')";
+                    '$plot_location_tags',
+                    '1'
+                    )";
 
     if (mysqli_query($mysqli, $query)) {
     } else {
