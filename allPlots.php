@@ -35,6 +35,10 @@
                 <?php
                 include("./components/signInTime.php");
                 include("./server/get/fetchPlots.php");
+                include("./server/get/fetchStaticData.php");
+
+                $AllTypologiesData = FetchAllPropertyTypologyData();
+
 
                 $all_plots_id = FetchPlotsID();
                 ?>
@@ -100,12 +104,13 @@
                                             <label class="mr-3 mb-0 d-none d-md-block">Typology:</label>
                                             <select class="form-control" id="kt_datatable_search_status">
                                                 <option value="">All</option>
-                                                <option value="1">Pending</option>
-                                                <option value="2">Delivered</option>
-                                                <option value="3">Canceled</option>
-                                                <option value="4">Success</option>
-                                                <option value="5">Info</option>
-                                                <option value="6">Danger</option>
+                                                <?php foreach ($AllTypologiesData as $key => $Typology) {
+                                                    # code...
+
+                                                ?>
+                                                    <option value="<?php echo $Typology[1]; ?>"><?php echo $Typology[0]; ?></option>
+                                                <?php }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>

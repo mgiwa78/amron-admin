@@ -9,7 +9,7 @@
                 <div class="d-flex align-items-baseline flex-wrap mr-5">
                     <!--begin::Page Title-->
                     <h5 class="text-dark font-weight-bold my-1 mr-5">
-                        Add Property </h5>
+                        View Property </h5>
                     <!--end::Page Title-->
 
                     <!--begin::Breadcrumb-->
@@ -17,6 +17,14 @@
                         <li class="breadcrumb-item">
                             <span href="" class="text-muted">
                                 Properties </span>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <span href="" class="text-muted">
+                                All Properties </span>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <span href="" class="text-muted">
+                                View Property </span>
                         </li>
 
                     </ul>
@@ -60,23 +68,44 @@
                                 <?php
                                 include("./components/alertHandler.php");
                                 include("./server/get/fetchStaticData.php");
-
-                                $AllTypologiesData = FetchAllPropertyTypologyData();
+                                include("./server/get/fetchProperties.php");
                                 $AllPhaseData = FetchAllPhaseData();
+                                $AllTypologiesData = FetchAllPropertyTypologyData();
+                                $RentalInstallment = FetchARentalTypes();
+
+                                $Property_ID = $_GET["PropID"];
+                                $propertyData = FetchPropertiesByID($Property_ID);
+                                print_r($propertyData);
+
+                                if ($propertyData) {
+                                    $propertyTypeData = FetchPropertyTypeData($propertyData["type_id"], $propertyData["type_data"], $Property_ID);
+
+                                    $propType = FetchPropertyTypologyByID($propertyData["property_typology"]);
+                                }
+                                $currentProp_type = $propertyData['property_typology'];
+                                print_r($propertyTypeData);
+                                print_r($propType);
 
                                 ?>
 
                                 <div class="form-group row">
 
                                     <div class="col-lg-6">
+                                        <label>Property ID:</label>
+                                        <span class="font-weight-bold"><?php echo $propertyData["property_id"] ?></span>
+
+                                    </div>
+                                    <div class="col-lg-6">
                                         <label>Property Typology:</label>
+                                        <span class="font-weight-bold"><?php echo $propType["type_name"] ?></span>
+
                                         <select name="property_typology" class="form-control select2" id="kt_select2_2" name="param">
                                             <option value="">All</option>
                                             <?php foreach ($AllTypologiesData as $key => $Typology) {
                                                 # code...
 
                                             ?>
-                                                <option value="<?php echo $Typology[1]; ?>"><?php echo $Typology[0]; ?></option>
+                                                <option <?php echo (int)$currentProp_type === (int)$Typology[1] ? "value='$Typology[1]' selected='selected'" : "" ?>><?php echo $Typology[0]; ?></option>
                                             <?php }
                                             ?>
 
@@ -92,30 +121,13 @@
 
                                         </select>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <label>Property Type:</label>
-                                        <div class="radio-inline">
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="property_type" value="2">
-                                                <span></span>
-                                                For Rent
-                                            </label>
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="property_type" value="1">
-                                                <span></span>
-                                                For Sale
-                                            </label>
-
-                                        </div>
-                                        <span class="form-text text-muted">Please select installment type</span>
-                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Selling Price:</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text">₦</span></div>
-                                            <input name="property_sale_price" type="number" class="form-control" placeholder="Enter Selling Price" />
+                                            <input value="<?php echo (int)$propertyData['type_id'] === 1 ? $propertyTypeData["sale_property_price"] : "0" ?>" name="property_sale_price" type="number" class="form-control" placeholder="Enter Selling Price" />
                                         </div>
                                         <span class="form-text text-muted">Please enter property price</span>
                                     </div>
@@ -124,7 +136,7 @@
                                         <label>Rent Price:</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text">₦</span></div>
-                                            <input name="property_rent_price" type="number" class="form-control" placeholder="Enter Rent Price" />
+                                            <input value="<?php echo (int)$propertyData['type_id'] === 2 ? $propertyTypeData["rental_price"] : "0" ?>" name="property_rent_price" type="number" class="form-control" placeholder="Enter Rent Price" />
                                         </div>
                                         <span class="form-text text-muted">Please enter rent price</span>
 
@@ -135,7 +147,7 @@
                                     <div class="col-lg-6">
                                         <label>Property Location:</label>
 
-                                        <input name="property_location" id="kt_tagify_1" class="form-control tagify" name='tags' placeholder='type...' value='Abuja' data-blacklist='.NET,PHP' />
+                                        <input name="property_location" id="kt_tagify_1" class="form-control tagify" name='tags' placeholder='type...' value='<?php echo join(",", explode("#", $propertyData['property_location'])) ?>' data-blacklist='.NET,PHP' />
 
                                         <div class="mt-3">
                                             <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-sm btn-light-primary font-weight-bold">Remove tags</a>
@@ -154,7 +166,7 @@
                                                 # code...
 
                                             ?>
-                                                <option value="<?php echo $Phase[1]; ?>"><?php echo "Phase " .  $Phase[0]; ?></option>
+                                                <option <?php echo (int)$propertyData["property_phase"] === (int)$Phase[0] ? "value='$Phase[0]' selected='selected'" : "" ?>><?php echo $Phase[1]; ?></option>
                                             <?php }
                                             ?>
                                             <option value="0000">Not in Phase</option>
@@ -168,26 +180,17 @@
                                     <div class="col-lg-6">
                                         <label>Rent Installment:</label>
                                         <div class="radio-inline">
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="property_rent_installment" value="1">
-                                                <span></span>
-                                                Monthly
-                                            </label>
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="property_rent_installment" value="2">
-                                                <span></span>
-                                                Trimonthly
-                                            </label>
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="property_rent_installment" value="3">
-                                                <span></span>
-                                                Semianually
-                                            </label>
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="property_rent_installment" value="4">
-                                                <span></span>
-                                                Anually
-                                            </label>
+                                            <?php foreach ($RentalInstallment as $key => $RentalInstallment) {
+                                                # code...
+
+                                            ?>
+                                                <label class="radio radio-solid">
+                                                    <input <?php echo (int)$propertyTypeData["rental_installment"] === (int)$RentalInstallment[0] ? "value='$Phase[0]' checked" : "" ?> type="radio" name="property_rent_installment" value="<?php echo $RentalInstallment[0] ?>">
+                                                    <span></span>
+                                                    <?php echo $RentalInstallment[1] ?>
+                                                </label>
+                                            <?php } ?>
+
                                             <label class="radio radio-solid">
                                                 <input type="radio" name="property_rent_installment" value="5">
                                                 <span></span>
@@ -199,12 +202,12 @@
 
                                     <div class="col-lg-3">
                                         <label>Bedrooms:</label>
-                                        <input name="property_bedroom_amount" type="number" class="form-control" placeholder="Enter bedrooms number">
+                                        <input value="<?php echo $propertyData["property_bedrooms"] ?>" name="property_bedroom_amount" type="number" class="form-control" placeholder="Enter bedrooms number">
                                         <span class="form-text text-muted">Please enter bedrooms number</span>
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Bathrooms:</label>
-                                        <input name="property_bathroom_amount" type="number" class="form-control" placeholder="Enter bathrooms number">
+                                        <input value="<?php echo $propertyData["property_bathrooms"] ?>" name="property_bathroom_amount" type="number" class="form-control" placeholder="Enter bathrooms number">
                                         <span class="form-text text-muted">Please enter bathrooms number</span>
                                     </div>
 

@@ -229,6 +229,24 @@ License: You must have a valid license purchased only from themeforest(the above
                   </ul>
                 </div>
               </li>
+              <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <a href="javascript:;" class="menu-link menu-toggle"><i class="menu-icon flaticon-mail-1"></i><span class="menu-text">Mail</span><i class="menu-arrow"></i></a>
+                <div class="menu-submenu">
+                  <i class="menu-arrow"></i>
+                  <ul class="menu-subnav">
+                    <li class="menu-item menu-item-parent" aria-haspopup="true">
+                      <span class="menu-link"><span class="menu-text">Mail</span></span>
+                    </li>
+                    <li class="menu-item" aria-haspopup="true">
+                      <a href="?action=allMails" class="menu-link"><i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">All Mail</span></a>
+                    </li>
+                    <li class="menu-item" aria-haspopup="true">
+                      <a href="?action=sendMail" class="menu-link"><i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Send Mail</span></a>
+                    </li>
+
+                  </ul>
+                </div>
+              </li>
             </ul>
             <!--end::Menu Nav-->
           </div>
@@ -442,6 +460,9 @@ License: You must have a valid license purchased only from themeforest(the above
             case 'allProperties':
               include("allProperties.php");
               break;
+            case 'ViewProperty':
+              include("propertyDisplay.php");
+              break;
               ////
               ////
             case 'addPlot':
@@ -482,6 +503,14 @@ License: You must have a valid license purchased only from themeforest(the above
               break;
             case 'addUser':
               include("createNewUser.php");
+              break;
+              ////
+              ////
+            case 'allMails':
+              include("allMails.php");
+              break;
+            case 'sendMail':
+              include("sendMail.php");
               break;
           }
         } else {
@@ -1314,7 +1343,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <?php
     }
-    if ($action === 'createProperty') {
+    if ($action === 'createProperty' || $action === 'ViewProperty') {
     ?>
       <script src="assets/js-mod/tagify.js"></script>
       <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
@@ -1339,6 +1368,26 @@ License: You must have a valid license purchased only from themeforest(the above
 
       <script src="assets/js-mod/createUserValidation.js"></script>
 
+
+
+    <?php
+    }
+    if ($action === 'allMails') {
+    ?>
+
+
+      <script src="assets/js-mod/mail-html-table copy.js"></script>
+
+    <?php
+    }
+    if ($action === 'sendMail') {
+    ?>
+
+
+      <script src="assets/js-mod/tagify.js"></script>
+      <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
+      <script src="assets/js-mod/createPropertyValidation.js"></script>
+      <script src="assets/js-mod/mailEditor.js"></script>
 
 
   <?php

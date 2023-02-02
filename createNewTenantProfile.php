@@ -62,6 +62,9 @@
                             <div class="card-body">
                                 <?php
                                 include("./components/alertHandler.php");
+                                include("./server/get/fetchStaticData.php");
+
+                                $AllPhaseData = FetchAllPhaseData();
                                 ?>
                                 <div class="form-group row">
                                     <div class="col-lg-3">
@@ -148,14 +151,16 @@
                                     <div class="col-lg-6">
                                         <label>Property Phase:</label>
                                         <select name="property_phase" class="form-control select2" id="kt_select2_1" name="param">
-                                            <option value="1">Phase 1</option>
-                                            <option value="2">Phase 2</option>
-                                            <option value="3">Phase 3</option>
-                                            <option value="4">Phase 4</option>
-                                            <option value="5">Phase 5</option>
-                                            <option value="6">Phase 6</option>
-                                            <option value="7">Phase 7</option>
-                                            <option value="0">Not in Phase</option>
+                                            <option value=""></option>
+
+                                            <?php foreach ($AllPhaseData as $key => $Phase) {
+                                                # code...
+
+                                            ?>
+                                                <option value="<?php echo $Phase[1]; ?>"><?php echo "Phase " .  $Phase[0]; ?></option>
+                                            <?php }
+                                            ?>
+                                            <option value="0000">Not in Phase</option>
 
                                         </select>
                                     </div>

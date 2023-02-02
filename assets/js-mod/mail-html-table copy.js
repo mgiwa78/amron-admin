@@ -26,54 +26,30 @@ var KTDatatableHtmlTableDemo = (function () {
           autoHide: true,
         },
         {
-          field: "Typology",
-          title: "Typology",
+          field: "Status",
+          title: "Status",
           autoHide: false,
           // callback function support for column rendering
           template: function (row) {
             var status = {
               1: {
-                title: "2 Bedroom Detached Bungalow",
+                title: "Payment Confrimation",
                 class: " label-light-warning",
               },
               2: {
-                title: "4 Bedroom with pent house",
+                title: "Rent Reminder",
                 class: " label-light-danger",
               },
               3: {
-                title: "4 Bedroom Semi-Detached Duplex",
-                class: " label-light-primary",
-              },
-              4: {
-                title: "5 Bedroom Detached Duplex",
-                class: " label-light-success",
-              },
-              5: {
-                title: "2 Bedroom Detached with BQ",
-                class: " label-light-info",
-              },
-              6: {
-                title: "3 Bedroom Semi-Detached Bungalow",
+                title: "General Mailing",
                 class: " label-light-danger",
-              },
-              7: {
-                title: "3 Bedroom Block Of Flat",
-                class: " label-light-warning",
-              },
-              8: {
-                title: "2 Bedroom Block Of Flat",
-                class: " label-light-warning",
-              },
-              9: {
-                title: "2 Bedroom Semi-Detached Bungalow",
-                class: " label-light-warning",
               },
             };
             return (
               '<span class="label font-weight-bold label-lg' +
-              status[row.Typology].class +
+              status[row.Status].class +
               ' label-inline h-sm-auto h-xxl-max-content">' +
-              status[row.Typology].title +
+              status[row.Status].title +
               "</span>"
             );
           },
@@ -86,11 +62,11 @@ var KTDatatableHtmlTableDemo = (function () {
           template: function (row) {
             var status = {
               1: {
-                title: "Rent",
+                title: "Automatic",
                 state: "primary",
               },
               2: {
-                title: "Sale",
+                title: "Manual",
                 state: "success",
               },
             };
@@ -109,7 +85,7 @@ var KTDatatableHtmlTableDemo = (function () {
     });
 
     $("#kt_datatable_search_status").on("change", function () {
-      datatable.search($(this).val().toLowerCase(), "Typology");
+      datatable.search($(this).val().toLowerCase(), "Status");
     });
 
     $("#kt_datatable_search_type").on("change", function () {

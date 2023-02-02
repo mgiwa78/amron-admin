@@ -58,6 +58,11 @@
                             <div class="card-body">
                                 <?php
                                 include("./components/alertHandler.php");
+                                include("./server/get/fetchStaticData.php");
+
+                                $AllTypologiesData = FetchAllPropertyTypologyData();
+                                $AllPhaseData = FetchAllPhaseData();
+
                                 ?>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
@@ -72,15 +77,13 @@
                                         <label>Property house Typology:</label>
                                         <select name="plot_house_typology" class="form-control select2" id="kt_select2_2" name="param">
                                             <option value="">All</option>
-                                            <option value="1">2 Bedroom Detached Bungalow</option>
-                                            <option value="2">4 Bedroom with pent house</option>
-                                            <option value="3">4 Bedroom Semi-Detached Duplex</option>
-                                            <option value="4">5 Bedroom Detached Duplex</option>
-                                            <option value="5">2 Bedroom Detached with BQ</option>
-                                            <option value="6">3 Bedroom Semi-Detached Bungalow</option>
-                                            <option value="7">3 Bedroom Block Of Flat</option>
-                                            <option value="8">2 Bedroom Block Of Flat</option>
-                                            <option value="9">2 Bedroom Semi-Detached Bungalow</option>
+                                            <?php foreach ($AllTypologiesData as $key => $Typology) {
+                                                # code...
+
+                                            ?>
+                                                <option value="<?php echo $Typology[1]; ?>"><?php echo $Typology[0]; ?></option>
+                                            <?php }
+                                            ?>
 
                                         </select>
                                     </div>
@@ -128,14 +131,17 @@
                                     <div class="col-lg-6">
                                         <label>Property Phase:</label>
                                         <select name="plot_phase" class="form-control select2" id="kt_select2_1" name="param">
-                                            <option value="1">Phase 1</option>
-                                            <option value="2">Phase 2</option>
-                                            <option value="3">Phase 3</option>
-                                            <option value="4">Phase 4</option>
-                                            <option value="5">Phase 5</option>
-                                            <option value="6">Phase 6</option>
-                                            <option value="7">Phase 7</option>
-                                            <option value="0">Not in Phase</option>
+                                            <option value=""></option>
+
+                                            <?php foreach ($AllPhaseData as $key => $Phase) {
+                                                # code...
+
+                                            ?>
+                                                <option value="<?php echo $Phase[1]; ?>"><?php echo "Phase " . $Phase[0]; ?></option>
+                                            <?php }
+                                            ?>
+                                            <option value="0000">Not in Phase</option>
+
                                         </select>
                                     </div>
                                 </div>

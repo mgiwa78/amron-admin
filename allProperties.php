@@ -35,9 +35,11 @@
                 <?php
                 include("./components/signInTime.php");
                 include("./server/get/fetchProperties.php");
-
+                include("./server/get/fetchStaticData.php");
 
                 $allPropertiesID = FetchPropertiesID();
+                $AllTypologiesData = FetchAllPropertyTypologyData();
+
                 ?>
                 <!--end::Dropdown-->
             </div>
@@ -101,15 +103,13 @@
                                             <label class="mr-3 mb-0 d-none d-md-block">Typology:</label>
                                             <select class="form-control" id="kt_datatable_search_status">
                                                 <option value="">All</option>
-                                                <option value="1">2 Bedroom Detached Bungalow</option>
-                                                <option value="2">4 Bedroom with pent house</option>
-                                                <option value="3">4 Bedroom Semi-Detached Duplex</option>
-                                                <option value="4">5 Bedroom Detached Duplex</option>
-                                                <option value="5">2 Bedroom Detached with BQ</option>
-                                                <option value="6">3 Bedroom Semi-Detached Bungalow</option>
-                                                <option value="7">3 Bedroom Block Of Flat</option>
-                                                <option value="8">2 Bedroom Block Of Flat</option>
-                                                <option value="9">2 Bedroom Semi-Detached Bungalow</option>
+                                                <?php foreach ($AllTypologiesData as $key => $Typology) {
+                                                    # code...
+
+                                                ?>
+                                                    <option value="<?php echo $Typology[1]; ?>"><?php echo $Typology[0]; ?></option>
+                                                <?php }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
@@ -173,7 +173,7 @@
                                     <td class="text-right"><?php echo $propertyData["type_id"]; ?></td>
                                     <td class="pr-0 text-right">
 
-                                        <a class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                        <a class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3" href="?action=ViewProperty&PropID=<?php echo $propertyData["property_id"] ?>">
                                             <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                         <rect x="0" y="0" width="24" height="24"></rect>
