@@ -57,13 +57,13 @@
                     <div class="card card-custom gutter-b example example-compact">
                         <div class="card-header">
                             <h3 class="card-title">
-                                Enter property details
+                                Edit property details
                             </h3>
 
                         </div>
 
                         <!--begin::Form-->
-                        <form id="kt_form_1" class="form" method="POST" action="./server/form/handleCreateProperty.php">
+                        <form id="kt_form_1" class="form" method="POST" action="./server/form/handleUpdateProperty.php">
                             <div class="card-body">
                                 <?php
                                 include("./components/alertHandler.php");
@@ -75,29 +75,38 @@
 
                                 $Property_ID = $_GET["PropID"];
                                 $propertyData = FetchPropertiesByID($Property_ID);
-                                print_r($propertyData);
+                                // print_r($propertyData);
 
                                 if ($propertyData) {
                                     $propertyTypeData = FetchPropertyTypeData($propertyData["type_id"], $propertyData["type_data"], $Property_ID);
 
-                                    $propType = FetchPropertyTypologyByID($propertyData["property_typology"]);
+                                    $propTypology = FetchPropertyTypologyByID($propertyData["property_typology"]);
                                 }
                                 $currentProp_type = $propertyData['property_typology'];
-                                print_r($propertyTypeData);
-                                print_r($propType);
+                                // echo "<br>";
+
+                                // print_r($propertyTypeData);
+                                // echo "<br>";
+                                // print_r($propTypology);
 
                                 ?>
 
                                 <div class="form-group row">
 
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-3">
                                         <label>Property ID:</label>
                                         <span class="font-weight-bold"><?php echo $propertyData["property_id"] ?></span>
+                                        <input value="<?php echo  $propertyData["property_id"] ?>" name="property_id" type="number" readonly class="form-control" placeholder="ID" />
+
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Property Data ID:</label>
+                                        <input value="<?php echo  $propertyData["type_data"] ?>" name="type_data_id" type="number" readonly class="form-control" placeholder="Data ID" />
 
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Property Typology:</label>
-                                        <span class="font-weight-bold"><?php echo $propType["type_name"] ?></span>
+                                        <span class="font-weight-bold"><?php echo $propTypology["type_name"] ?></span>
 
                                         <select name="property_typology" class="form-control select2" id="kt_select2_2" name="param">
                                             <option value="">All</option>
@@ -105,7 +114,7 @@
                                                 # code...
 
                                             ?>
-                                                <option <?php echo (int)$currentProp_type === (int)$Typology[1] ? "value='$Typology[1]' selected='selected'" : "" ?>><?php echo $Typology[0]; ?></option>
+                                                <option <?php echo (int)$currentProp_type === (int)$Typology[1] ? "value='$Typology[1]' selected='selected'" : "value='$Typology[1]'" ?>><?php echo $Typology[0]; ?></option>
                                             <?php }
                                             ?>
 
@@ -166,7 +175,7 @@
                                                 # code...
 
                                             ?>
-                                                <option <?php echo (int)$propertyData["property_phase"] === (int)$Phase[0] ? "value='$Phase[0]' selected='selected'" : "" ?>><?php echo $Phase[1]; ?></option>
+                                                <option <?php echo (int)$propertyData["property_phase"] === (int)$Phase[0] ? "value='$Phase[0]' selected='selected'" : "value='$Phase[0]'" ?>><?php echo $Phase[1]; ?></option>
                                             <?php }
                                             ?>
                                             <option value="0000">Not in Phase</option>
@@ -179,24 +188,55 @@
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Rent Installment:</label>
-                                        <div class="radio-inline">
-                                            <?php foreach ($RentalInstallment as $key => $RentalInstallment) {
-                                                # code...
+                                        <?php
 
-                                            ?>
+                                        if ((int)$propertyData["type_id"] === 2) {
+
+                                        ?>
+                                            <div class="radio-inline">
+                                                <?php foreach ($RentalInstallment as $key => $RentalInstallment) {
+                                                    # code...
+
+                                                ?>
+                                                    <label class="radio radio-solid">
+                                                        <input <?php echo (int)$propertyTypeData["rental_installment"] === (int)$RentalInstallment[0] ? "value='$RentalInstallment[0]' checked" : "" ?> type="radio" name="property_rent_installment" value="<?php echo $RentalInstallment[0] ?>">
+                                                        <span></span>
+                                                        <?php echo $RentalInstallment[1] ?>
+                                                    </label>
+                                                <?php } ?>
+
                                                 <label class="radio radio-solid">
-                                                    <input <?php echo (int)$propertyTypeData["rental_installment"] === (int)$RentalInstallment[0] ? "value='$Phase[0]' checked" : "" ?> type="radio" name="property_rent_installment" value="<?php echo $RentalInstallment[0] ?>">
+                                                    <input type="radio" name="property_rent_installment" value="5">
                                                     <span></span>
-                                                    <?php echo $RentalInstallment[1] ?>
+                                                    Not Rent
                                                 </label>
-                                            <?php } ?>
+                                            </div>
+                                        <?php
+                                        } ?>
+                                        <?php
+                                        if ((int)$propertyData["type_id"] === 1) {
+                                        ?>
+                                            <div class="radio-inline">
+                                                <?php foreach ($RentalInstallment as $key => $RentalInstallment) {
+                                                    # code...
 
-                                            <label class="radio radio-solid">
-                                                <input type="radio" name="property_rent_installment" value="5">
-                                                <span></span>
-                                                Not Rent
-                                            </label>
-                                        </div>
+                                                ?>
+                                                    <label class="radio radio-solid">
+                                                        <input <?php echo  "value='$RentalInstallment[1]' checked" ?> type="radio" name="property_rent_installment" value="<?php echo $RentalInstallment[0] ?>">
+                                                        <span></span>
+                                                        <?php echo $RentalInstallment[1] ?>
+                                                    </label>
+                                                <?php } ?>
+
+                                                <label class="radio radio-solid">
+                                                    <input type="radio" name="property_rent_installment" checked value="5">
+                                                    <span></span>
+                                                    Not Rent
+                                                </label>
+                                            </div>
+                                        <?php
+                                        } ?>
+
                                         <span class="form-text text-muted">Please select installment type</span>
                                     </div>
 
@@ -212,23 +252,95 @@
                                     </div>
 
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-4">
+                                        <label>Property Type:</label>
+                                        <div class="radio-inline">
+                                            <label class="radio radio-solid">
+                                                <input <?php echo (int)$propertyData["type_id"] === 2 ? "value='2' checked" : "value='2'" ?> name="property_type" type="radio"">
 
-                                <!-- begin: Example Code-->
+                                                <span></span>
+                                                For Rent
+                                            </label>
+                                            <label class=" radio radio-solid">
+                                                <input <?php echo (int)$propertyData["type_id"] === 1 ? "value='1' checked" : "value='1'" ?> name="property_type" type="radio"">
+                                                <span></span>
+                                                For Sale
+                                            </label>
 
-                                <!-- end: Example Code-->
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-lg-4"></div>
-                                    <div class="col-lg-8">
-                                        <input type="submit" name="createPropertySubmit" class="btn btn-primary mr-2" value="Submit">
-                                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                                        </div>
+                                        <span class=" form-text text-muted">Please select installment type</span>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label class="col-12 col-form-label font-weight-bolder">Display On Website:</label>
+                                            <div class="col-lg-3">
+                                                <span class="switch switch-lg switch-icon">
+                                                    <label>
+                                                        <input type="checkbox" <?php echo (int)$propertyData["web_display"] === 1 ? "checked" : "" ?> name="property_web_display" />
+                                                        <span></span>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label class="col-12 col-form-label font-weight-bolder">Property Availability:</label>
+                                            <div class="col-lg-3">
+                                                <span class="switch switch-lg switch-icon">
+                                                    <label>
+                                                        <input type="checkbox" <?php echo (int)$propertyData["available"] === 1 ? "checked" : "" ?> name="property_availability" />
+                                                        <span></span>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
+
+
+
+                                    <!-- begin: Example Code-->
+
+                                    <!-- end: Example Code-->
                                 </div>
-                            </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-8">
+                                            <input type="submit" name="createPropertySubmit" class="btn btn-primary mr-2" value="Submit">
+
+                                            <button type="reset" class="btn btn-secondary">Cancel</button>
+
+                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+                                                Delete
+                                            </button>
+                                            <!-- Button trigger modal-->
+
+
+                                            <!-- Modal-->
+                                            <div class="modal fade " id="exampleModalCenter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content ">
+                                                        <div class="modal-header bg-danger ">
+                                                            <h5 class="modal-title text-white" id="exampleModalLabel">Confirm Delete</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <i aria-hidden="true" class="ki ki-close"></i>
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                                                            <input type="submit" name="DeleteProperty" value="Delete" class="btn btn-danger font-weight-bold">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                         </form>
                         <!--end::Form-->
                     </div>
+
                     <!--end::Card-->
 
                     <!--begin::Card-->

@@ -85,6 +85,11 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <?php
+                    include("./components/alertHandler.php");
+
+                    ?>
+
                     <!--begin: Search Form-->
                     <!--begin::Search Form-->
                     <div class="mb-7">

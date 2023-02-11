@@ -23,7 +23,9 @@ function FetchPropertiesByID($property_Id)
                     `property_location`, 
                     `property_phase`, 
                     `type_id`, 
-                    `type_data` 
+                    `type_data`,
+                    `web_display`,
+                    `available` 
             FROM 
                     `properties` 
             WHERE property_id = $property_Id";
@@ -31,6 +33,7 @@ function FetchPropertiesByID($property_Id)
 
     return $property;
 }
+
 function FetchPropertyTypeData($type_id, $type_data_id, $property_Id)
 {
     $type_data = "";

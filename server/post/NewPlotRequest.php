@@ -10,7 +10,7 @@ function CreateNewPlot(
     $plot_phase,
     $plot_installment,
     $plot_size,
-    $plot_location_tags
+    $plot_location_tags,
 ) {
 
 
@@ -25,7 +25,8 @@ function CreateNewPlot(
                     `plot_typology`, 
                     `plot_price`,
                     `plot_installment`,
-                    `plot_status`
+                    `plot_status`,
+                    `web_display`
                     ) 
                 VALUES (
                     '$plot_size',
@@ -34,6 +35,7 @@ function CreateNewPlot(
                     '$plot_house_typology',
                     '$plot_sale_price',
                     '$plot_installment',
+                    '1',                   
                     '1'
                     )";
 

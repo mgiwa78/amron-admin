@@ -24,7 +24,8 @@ function FetchPlotByID($plot_id)
     `plot_size`, 
     `plot_number`, 
     `plot_installment`,
-    `plot_status` 
+    `plot_status`,
+    `web_display`
     FROM 
     `plots` 
     WHERE plot_id = $plot_id";

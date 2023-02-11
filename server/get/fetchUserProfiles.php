@@ -23,7 +23,8 @@ function FetchUserProfileByID($user_id)
                 `user_email`, 
                 `user_position`,
                 `user_last_login`,
-                `user_position`
+                `user_position`,
+                `user_password`
             FROM 
              `users` WHERE user_id='$user_id'";
 

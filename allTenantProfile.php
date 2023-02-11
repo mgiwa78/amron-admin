@@ -82,6 +82,10 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <?php
+                    include("./components/alertHandler.php");
+
+                    ?>
                     <!--begin: Search Form-->
                     <!--begin::Search Form-->
                     <div class="mb-7">
@@ -147,7 +151,7 @@
                                     <td class="text-right"><?php echo $TenantData["tenant_type_id"] ?></td>
                                     <td class="pr-0 text-left">
 
-                                        <a class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                        <a class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3" href="?action=ViewTenants&TenantID=<?php echo $TenantData["tenant_id"] ?>">
                                             <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                         <rect x="0" y="0" width="24" height="24"></rect>

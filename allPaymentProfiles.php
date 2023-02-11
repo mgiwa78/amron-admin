@@ -82,6 +82,10 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <?php
+                    include("./components/alertHandler.php");
+
+                    ?>
                     <!--begin: Search Form-->
                     <!--begin::Search Form-->
                     <div class="mb-7">
@@ -173,7 +177,7 @@
                                                         <path d="M7,13 L17,13 C19.209139,13 21,14.790861 21,17 C21,19.209139 19.209139,21 17,21 L7,21 C4.790861,21 3,19.209139 3,17 C3,14.790861 4.790861,13 7,13 Z M17,19 C18.1045695,19 19,18.1045695 19,17 C19,15.8954305 18.1045695,15 17,15 C15.8954305,15 15,15.8954305 15,17 C15,18.1045695 15.8954305,19 17,19 Z" fill="#000000" opacity="0.3"></path>
                                                     </g>
                                                 </svg><!--end::Svg Icon--></span> </a>
-                                        <a class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                        <a class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3" href="?action=ViewPaymentProfile&ProfileID=<?php echo $PaymentProfileData["client_payment_id"] ?>">
                                             <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                         <rect x="0" y="0" width="24" height="24"></rect>

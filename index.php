@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("./utils/confirmLogin.php");
 
 
 ?>
@@ -311,7 +312,6 @@ License: You must have a valid license purchased only from themeforest(the above
                   <!--begin:Header-->
                   <div class="d-flex flex-column flex-center py-10 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url(assets/media/misc/bg-1.jpg)">
                     <h4 class="text-white font-weight-bold">Quick Actions</h4>
-                    <span class="btn btn-success btn-sm font-weight-bold font-size-sm mt-2">23 tasks pending</span>
                   </div>
                   <!--end:Header-->
 
@@ -320,15 +320,14 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--begin:Item-->
                     <div class="col-6">
                       <a href="#" class="d-block py-10 px-5 text-center bg-hover-light border-right border-bottom">
-                        <span class="svg-icon svg-icon-3x svg-icon-success"><!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Euro.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <span class="svg-icon svg-icon-3x svg-icon-success"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Home\Home.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                               <rect x="0" y="0" width="24" height="24" />
-                              <path d="M4.3618034,10.2763932 L4.8618034,9.2763932 C4.94649941,9.10700119 5.11963097,9 5.30901699,9 L15.190983,9 C15.4671254,9 15.690983,9.22385763 15.690983,9.5 C15.690983,9.57762255 15.6729105,9.65417908 15.6381966,9.7236068 L15.1381966,10.7236068 C15.0535006,10.8929988 14.880369,11 14.690983,11 L4.80901699,11 C4.53287462,11 4.30901699,10.7761424 4.30901699,10.5 C4.30901699,10.4223775 4.32708954,10.3458209 4.3618034,10.2763932 Z M14.6381966,13.7236068 L14.1381966,14.7236068 C14.0535006,14.8929988 13.880369,15 13.690983,15 L4.80901699,15 C4.53287462,15 4.30901699,14.7761424 4.30901699,14.5 C4.30901699,14.4223775 4.32708954,14.3458209 4.3618034,14.2763932 L4.8618034,13.2763932 C4.94649941,13.1070012 5.11963097,13 5.30901699,13 L14.190983,13 C14.4671254,13 14.690983,13.2238576 14.690983,13.5 C14.690983,13.5776225 14.6729105,13.6541791 14.6381966,13.7236068 Z" fill="#000000" opacity="0.3" />
-                              <path d="M17.369,7.618 C16.976998,7.08599734 16.4660031,6.69750122 15.836,6.4525 C15.2059968,6.20749878 14.590003,6.085 13.988,6.085 C13.2179962,6.085 12.5180032,6.2249986 11.888,6.505 C11.2579969,6.7850014 10.7155023,7.16999755 10.2605,7.66 C9.80549773,8.15000245 9.45550123,8.72399671 9.2105,9.382 C8.96549878,10.0400033 8.843,10.7539961 8.843,11.524 C8.843,12.3360041 8.96199881,13.0779966 9.2,13.75 C9.43800119,14.4220034 9.7774978,14.9994976 10.2185,15.4825 C10.6595022,15.9655024 11.1879969,16.3399987 11.804,16.606 C12.4200031,16.8720013 13.1129962,17.005 13.883,17.005 C14.681004,17.005 15.3879969,16.8475016 16.004,16.5325 C16.6200031,16.2174984 17.1169981,15.8010026 17.495,15.283 L19.616,16.774 C18.9579967,17.6000041 18.1530048,18.2404977 17.201,18.6955 C16.2489952,19.1505023 15.1360064,19.378 13.862,19.378 C12.6999942,19.378 11.6325049,19.1855019 10.6595,18.8005 C9.68649514,18.4154981 8.8500035,17.8765035 8.15,17.1835 C7.4499965,16.4904965 6.90400196,15.6645048 6.512,14.7055 C6.11999804,13.7464952 5.924,12.6860058 5.924,11.524 C5.924,10.333994 6.13049794,9.25950479 6.5435,8.3005 C6.95650207,7.34149521 7.5234964,6.52600336 8.2445,5.854 C8.96550361,5.18199664 9.8159951,4.66400182 10.796,4.3 C11.7760049,3.93599818 12.8399943,3.754 13.988,3.754 C14.4640024,3.754 14.9609974,3.79949954 15.479,3.8905 C15.9970026,3.98150045 16.4939976,4.12149906 16.97,4.3105 C17.4460024,4.49950095 17.8939979,4.7339986 18.314,5.014 C18.7340021,5.2940014 19.0909985,5.62999804 19.385,6.022 L17.369,7.618 Z" fill="#000000" />
+                              <path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z" fill="#000000" />
                             </g>
                           </svg><!--end::Svg Icon--></span>
-                        <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">Accounting</span>
-                        <span class="d-block text-dark-50 font-size-lg">eCommerce</span>
+                        <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">Properties</span>
+                        <span class="d-block text-dark-50 font-size-lg">Create Property</span>
                       </a>
                     </div>
                     <!--end:Item-->
@@ -336,15 +335,15 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--begin:Item-->
                     <div class="col-6">
                       <a href="#" class="d-block py-10 px-5 text-center bg-hover-light border-bottom">
-                        <span class="svg-icon svg-icon-3x svg-icon-success"><!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-attachment.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <span class="svg-icon svg-icon-3x svg-icon-success"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Layout\Layout-arrange.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                               <rect x="0" y="0" width="24" height="24" />
-                              <path d="M14.8571499,13 C14.9499122,12.7223297 15,12.4263059 15,12.1190476 L15,6.88095238 C15,5.28984632 13.6568542,4 12,4 L11.7272727,4 C10.2210416,4 9,5.17258756 9,6.61904762 L10.0909091,6.61904762 C10.0909091,5.75117158 10.823534,5.04761905 11.7272727,5.04761905 L12,5.04761905 C13.0543618,5.04761905 13.9090909,5.86843034 13.9090909,6.88095238 L13.9090909,12.1190476 C13.9090909,12.4383379 13.8240964,12.7385644 13.6746497,13 L10.3253503,13 C10.1759036,12.7385644 10.0909091,12.4383379 10.0909091,12.1190476 L10.0909091,9.5 C10.0909091,9.06606198 10.4572216,8.71428571 10.9090909,8.71428571 C11.3609602,8.71428571 11.7272727,9.06606198 11.7272727,9.5 L11.7272727,11.3333333 L12.8181818,11.3333333 L12.8181818,9.5 C12.8181818,8.48747796 11.9634527,7.66666667 10.9090909,7.66666667 C9.85472911,7.66666667 9,8.48747796 9,9.5 L9,12.1190476 C9,12.4263059 9.0500878,12.7223297 9.14285008,13 L6,13 C5.44771525,13 5,12.5522847 5,12 L5,3 C5,2.44771525 5.44771525,2 6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,12 C19,12.5522847 18.5522847,13 18,13 L14.8571499,13 Z" fill="#000000" opacity="0.3" />
-                              <path d="M9,10.3333333 L9,12.1190476 C9,13.7101537 10.3431458,15 12,15 C13.6568542,15 15,13.7101537 15,12.1190476 L15,10.3333333 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 L9,10.3333333 Z M10.0909091,11.1212121 L12,12.5 L13.9090909,11.1212121 L13.9090909,12.1190476 C13.9090909,13.1315697 13.0543618,13.952381 12,13.952381 C10.9456382,13.952381 10.0909091,13.1315697 10.0909091,12.1190476 L10.0909091,11.1212121 Z" fill="#000000" />
+                              <path d="M5.5,4 L9.5,4 C10.3284271,4 11,4.67157288 11,5.5 L11,6.5 C11,7.32842712 10.3284271,8 9.5,8 L5.5,8 C4.67157288,8 4,7.32842712 4,6.5 L4,5.5 C4,4.67157288 4.67157288,4 5.5,4 Z M14.5,16 L18.5,16 C19.3284271,16 20,16.6715729 20,17.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,17.5 C13,16.6715729 13.6715729,16 14.5,16 Z" fill="#000000" />
+                              <path d="M5.5,10 L9.5,10 C10.3284271,10 11,10.6715729 11,11.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,11.5 C4,10.6715729 4.67157288,10 5.5,10 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,12.5 C20,13.3284271 19.3284271,14 18.5,14 L14.5,14 C13.6715729,14 13,13.3284271 13,12.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z" fill="#000000" opacity="0.3" />
                             </g>
                           </svg><!--end::Svg Icon--></span>
-                        <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">Administration</span>
-                        <span class="d-block text-dark-50 font-size-lg">Console</span>
+                        <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">Plot</span>
+                        <span class="d-block text-dark-50 font-size-lg">Add New Plot</span>
                       </a>
                     </div>
                     <!--end:Item-->
@@ -352,15 +351,15 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--begin:Item-->
                     <div class="col-6">
                       <a href="#" class="d-block py-10 px-5 text-center bg-hover-light border-right">
-                        <span class="svg-icon svg-icon-3x svg-icon-success"><!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Box2.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <span class="svg-icon svg-icon-3x svg-icon-success"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Shopping\Safe.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                               <rect x="0" y="0" width="24" height="24" />
-                              <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
-                              <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                              <path d="M6.5,16 L7.5,16 C8.32842712,16 9,16.6715729 9,17.5 L9,19.5 C9,20.3284271 8.32842712,21 7.5,21 L6.5,21 C5.67157288,21 5,20.3284271 5,19.5 L5,17.5 C5,16.6715729 5.67157288,16 6.5,16 Z M16.5,16 L17.5,16 C18.3284271,16 19,16.6715729 19,17.5 L19,19.5 C19,20.3284271 18.3284271,21 17.5,21 L16.5,21 C15.6715729,21 15,20.3284271 15,19.5 L15,17.5 C15,16.6715729 15.6715729,16 16.5,16 Z" fill="#000000" opacity="0.3" />
+                              <path d="M5,4 L19,4 C20.1045695,4 21,4.8954305 21,6 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6 C3,4.8954305 3.8954305,4 5,4 Z M15.5,15 C17.4329966,15 19,13.4329966 19,11.5 C19,9.56700338 17.4329966,8 15.5,8 C13.5670034,8 12,9.56700338 12,11.5 C12,13.4329966 13.5670034,15 15.5,15 Z M15.5,13 C16.3284271,13 17,12.3284271 17,11.5 C17,10.6715729 16.3284271,10 15.5,10 C14.6715729,10 14,10.6715729 14,11.5 C14,12.3284271 14.6715729,13 15.5,13 Z M7,8 L7,8 C7.55228475,8 8,8.44771525 8,9 L8,11 C8,11.5522847 7.55228475,12 7,12 L7,12 C6.44771525,12 6,11.5522847 6,11 L6,9 C6,8.44771525 6.44771525,8 7,8 Z" fill="#000000" />
                             </g>
                           </svg><!--end::Svg Icon--></span>
-                        <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">Projects</span>
-                        <span class="d-block text-dark-50 font-size-lg">Pending Tasks</span>
+                        <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">Payment</span>
+                        <span class="d-block text-dark-50 font-size-lg">Record New Payment</span>
                       </a>
                     </div>
                     <!--end:Item-->
@@ -368,15 +367,16 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--begin:Item-->
                     <div class="col-6">
                       <a href="#" class="d-block py-10 px-5 text-center bg-hover-light">
-                        <span class="svg-icon svg-icon-3x svg-icon-success"><!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+
+                        <span class="svg-icon svg-icon-3x svg-icon-success"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Communication\Add-user.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                               <polygon points="0 0 24 0 24 24 0 24" />
-                              <path d="M18,14 C16.3431458,14 15,12.6568542 15,11 C15,9.34314575 16.3431458,8 18,8 C19.6568542,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                              <path d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                              <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                              <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
                             </g>
                           </svg><!--end::Svg Icon--></span>
-                        <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">Customers</span>
-                        <span class="d-block text-dark-50 font-size-lg">Latest cases</span>
+                        <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">Tenants</span>
+                        <span class="d-block text-dark-50 font-size-lg">Add New tennat</span>
                       </a>
                     </div>
                     <!--end:Item-->
@@ -427,7 +427,7 @@ License: You must have a valid license purchased only from themeforest(the above
               <div class="topbar-item">
                 <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
                   <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-                  <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">User Name</span>
+                  <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3"><?php echo $_SESSION["user_l_name"] . " " . $_SESSION["user_f_name"] ?></span>
                   <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                     <span class="symbol-label font-size-h5 font-weight-bold">S</span>
                   </span>
@@ -471,6 +471,9 @@ License: You must have a valid license purchased only from themeforest(the above
             case 'allPlots':
               include("allPlots.php");
               break;
+            case 'ViewPlot':
+              include("EditPlot.php");
+              break;
               ////
               ////
             case 'recordPayment':
@@ -488,6 +491,9 @@ License: You must have a valid license purchased only from themeforest(the above
             case 'paymentProfileData':
               include("paymentProfileData.php");
               break;
+            case 'ViewPaymentProfile':
+              include("EditPaymentProfile.php");
+              break;
               ////
               ////
             case 'allTenants':
@@ -496,6 +502,9 @@ License: You must have a valid license purchased only from themeforest(the above
             case 'addTenants':
               include("createNewTenantProfile.php");
               break;
+            case 'ViewTenants':
+              include("EditTenantProfile.php");
+              break;
               ////
               ////
             case 'allUsers':
@@ -503,6 +512,9 @@ License: You must have a valid license purchased only from themeforest(the above
               break;
             case 'addUser':
               include("createNewUser.php");
+              break;
+            case 'ViewUser':
+              include("EditUser.php");
               break;
               ////
               ////
@@ -554,12 +566,12 @@ License: You must have a valid license purchased only from themeforest(the above
           <i class="symbol-badge bg-success"></i>
         </div>
         <div class="d-flex flex-column">
-          <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-            User Name
-          </a>
-          <div class="text-muted mt-1">Manager </div>
+          <span class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
+            <?php echo $_SESSION["user_l_name"] . " " . $_SESSION["user_f_name"] ?>
+          </span>
+          <div class="text-muted mt-1"><?php echo $_SESSION["user_position"] ?> </div>
           <div class="navi mt-2">
-            <a href="#" class="navi-item">
+            <span>
               <span class="navi-link p-0 pb-2">
                 <span class="navi-icon mr-1">
                   <span class="svg-icon svg-icon-lg svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-notification.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -570,11 +582,12 @@ License: You must have a valid license purchased only from themeforest(the above
                       </g>
                     </svg><!--end::Svg Icon--></span>
                 </span>
-                <span class="navi-text text-muted text-hover-primary">email@email.com</span>
+                <span class="navi-text text-muted text-hover-primary"><?php echo $_SESSION["user_email"] ?></span>
               </span>
-            </a>
-
-            <a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
+            </span>
+            <form action="./utils/handleUserSignOut.php" method="POST">
+              <input type="submit" name="SignUserOut" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" value="Sign Out">
+            </form>
           </div>
         </div>
       </div>
@@ -585,36 +598,7 @@ License: You must have a valid license purchased only from themeforest(the above
       <!--end::Separator-->
 
       <!--begin::Nav-->
-      <div class="navi navi-spacer-x-0 p-0">
-        <!--begin::Item-->
-        <a href="#" class="navi-item">
-          <div class="navi-link">
-            <div class="symbol symbol-40 bg-light mr-3">
-              <div class="symbol-label">
-                <span class="svg-icon svg-icon-md svg-icon-success"><!--begin::Svg Icon | path:assets/media/svg/icons/General/Notification2.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <rect x="0" y="0" width="24" height="24" />
-                      <path d="M13.2070325,4 C13.0721672,4.47683179 13,4.97998812 13,5.5 C13,8.53756612 15.4624339,11 18.5,11 C19.0200119,11 19.5231682,10.9278328 20,10.7929675 L20,17 C20,18.6568542 18.6568542,20 17,20 L7,20 C5.34314575,20 4,18.6568542 4,17 L4,7 C4,5.34314575 5.34314575,4 7,4 L13.2070325,4 Z" fill="#000000" />
-                      <circle fill="#000000" opacity="0.3" cx="18.5" cy="5.5" r="2.5" />
-                    </g>
-                  </svg><!--end::Svg Icon--></span>
-              </div>
-            </div>
-            <div class="navi-text">
-              <div class="font-weight-bold">My Profile</div>
-              <div class="text-muted">
-                Account settings and more
-                <span class="label label-light-danger label-inline font-weight-bold">verify email</span>
-              </div>
-            </div>
-          </div>
-        </a>
-        <!--end:Item-->
 
-        <!--begin::Item-->
-
-        <!--end:Item-->
-      </div>
       <!--end::Nav-->
 
 
@@ -1275,7 +1259,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <?php
     }
-    if ($action === 'createPaymentsProfile') {
+    if ($action === 'createPaymentsProfile' || $action === 'ViewPaymentProfile') {
     ?>
       <script src="assets/js-mod/tagify.js"></script>
       <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
@@ -1283,7 +1267,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <?php
     }
-    if ($action === 'addTenants') {
+    if ($action === 'addTenants' || $action === 'ViewTenants') {
     ?>
       <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
       <script src="assets/js-mod/createTenantProfileValidation.js"></script>
@@ -1336,7 +1320,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <?php
     }
-    if ($action === 'paymentProfileData') {
+    if ($action === 'paymentProfileData' || $action === 'ViewProperty') {
     ?>
       <script src="assets/js/pages/widgets.js?v=7.0.6"></script>
 
@@ -1348,14 +1332,16 @@ License: You must have a valid license purchased only from themeforest(the above
       <script src="assets/js-mod/tagify.js"></script>
       <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
       <script src="assets/js-mod/createPropertyValidation.js"></script>
+      <script src="assets/js/pages/crud/forms/widgets/bootstrap-switch.js?v=7.0.6"></script>
 
 
 
     <?php
     }
-    if ($action === 'addPlot') {
+    if ($action === 'addPlot' || $action === 'ViewPlot') {
     ?>
       <script src="assets/js-mod/tagify.js"></script>
+      <script src="assets/js/pages/crud/forms/widgets/bootstrap-switch.js?v=7.0.6"></script>
       <script src="assets/js/pages/crud/forms/widgets/select2.js?v=7.0.6"></script>
       <script src="assets/js-mod/createPlotValidation.js"></script>
 

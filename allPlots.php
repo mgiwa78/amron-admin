@@ -86,6 +86,10 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <?php
+                    include("./components/alertHandler.php");
+
+                    ?>
                     <!--begin: Search Form-->
                     <!--begin::Search Form-->
                     <div class="mb-7">
@@ -141,14 +145,13 @@
                     <table class="datatable datatable-bordered datatable-head-custom" id="kt_datatable">
                         <thead>
                             <tr>
-                                <th title="Field #1">Plot ID</th>
                                 <th title="Field #2">Location</th>
                                 <th title="Field #3">Size</th>
 
                                 <th title="Field #4">Price</th>
                                 <th title="Field #5">House</th>
                                 <th title="Field #6"> Type</th>
-                                <th title="Field #6"> Action</th>
+                                <th title="Field #7"> Action</th>
                                 <!-- <th title="Field #6">Order Date</th>
                                 <th title="Field #7">Status</th>
                                 <th title="Field #8">Type</th> -->
@@ -165,8 +168,7 @@
 
                             ?>
                                 <tr>
-                                    <td><?php echo $plotData["plot_id"]  ?></php>
-                                    </td>
+
                                     <td><?php echo join(",", explode("#", $plotData["plot_location"]))  ?></td>
 
                                     <td><?php echo $plotData["plot_size"]  ?></td>
@@ -175,8 +177,7 @@
                                     <td class="text-left"><?php echo $plotData["plot_typology"]  ?></td>
                                     <td class="text-left"><?php echo $plotData["plot_status"]  ?></td>
                                     <td class="pr-0 text-left">
-
-                                        <a class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                        <a class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3" href="?action=ViewPlot&PlotID=<?php echo $plotData["plot_id"] ?>">
                                             <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                         <rect x="0" y="0" width="24" height="24"></rect>
@@ -192,7 +193,6 @@
                                                         <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"></path>
                                                     </g>
                                                 </svg><!--end::Svg Icon--></span> </a>
-
                                     </td>
 
                                 </tr>

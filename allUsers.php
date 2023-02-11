@@ -69,6 +69,10 @@
 
                 <!--begin::Body-->
                 <div class="card-body pt-0 pb-3">
+                    <?php
+                    include("./components/alertHandler.php");
+
+                    ?>
                     <div class="tab-content">
                         <!--begin::Table-->
                         <div class="table-responsive">
@@ -132,9 +136,9 @@
                                                 </span>
                                             </td>
 
-                                            <td class="pr-0 text-right">
+                                            <td class="pr-0 text-center">
 
-                                                <a class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                                <a class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3" href="?action=ViewUser&UserID=<?php echo $UserId[0] ?>">
                                                     <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                                 <rect x="0" y="0" width="24" height="24"></rect>
@@ -142,14 +146,12 @@
                                                                 <path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
                                                             </g>
                                                         </svg><!--end::Svg Icon--></span> </a>
-                                                <a class="btn btn-icon btn-light btn-hover-primary btn-sm">
-                                                    <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                                <rect x="0" y="0" width="24" height="24"></rect>
-                                                                <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"></path>
-                                                                <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"></path>
-                                                            </g>
-                                                        </svg><!--end::Svg Icon--></span> </a>
+
+                                                <!-- Button trigger modal-->
+
+
+                                                <!-- Modal-->
+
 
                                             </td>
                                         </tr>

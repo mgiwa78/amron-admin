@@ -29,6 +29,7 @@ function CreateNewProperty(
                     `property_bathrooms`, 
                     `property_location`, 
                     `property_phase`, 
+                    `web_display`, 
                     `type_id`) 
                 VALUES (
                     '$property_typology',
@@ -36,6 +37,7 @@ function CreateNewProperty(
                     '$property_bathroom_amount',
                     '$property_location_tags',
                     '$property_phase',
+                    '1',
                     '$property_type')";
 
     if (mysqli_query($mysqli, $query)) {

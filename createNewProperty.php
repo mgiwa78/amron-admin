@@ -96,12 +96,12 @@
                                         <label>Property Type:</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="property_type" value="2">
+                                                <input type="radio" name="property_type" value="1">
                                                 <span></span>
                                                 For Rent
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="property_type" value="1">
+                                                <input type="radio" name="property_type" value="2">
                                                 <span></span>
                                                 For Sale
                                             </label>
@@ -154,7 +154,7 @@
                                                 # code...
 
                                             ?>
-                                                <option value="<?php echo $Phase[1]; ?>"><?php echo "Phase " .  $Phase[0]; ?></option>
+                                                <option value="<?php echo $Phase[0] ?>"><?php echo $Phase[1]; ?></option>
                                             <?php }
                                             ?>
                                             <option value="0000">Not in Phase</option>
