@@ -67,3 +67,15 @@ function FetchPropertyTypeData($type_id, $type_data_id, $property_Id)
     }
     return $type_data;
 }
+function FetchPropertyImages($property_Id)
+{
+    $mysqli = new mysqli("localhost", "root", "", "amron");
+    $query = "SELECT 
+        `property_pictures` 
+    FROM 
+        `properties` 
+    WHERE 
+         property_id=$property_Id";
+    $property_images = mysqli_fetch_assoc(mysqli_query($mysqli, $query));
+    return $property_images["property_pictures"];
+}

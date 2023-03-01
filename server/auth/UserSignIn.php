@@ -71,7 +71,6 @@ if (isset($_POST["UserSignInAuth"])) {
         $_SESSION["user_position"] = $authRequest["user_position"];
         $_SESSION["user_last_login"] = $authRequest["user_last_login"];
         $_SESSION["user_email"] = $authRequest["user_email"];
-        echo $_SESSION["user_id"];
 
         header("Location: ../../");
     } else {

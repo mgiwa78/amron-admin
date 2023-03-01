@@ -78,6 +78,8 @@
                                     </div>
 
                                 </div>
+                                <input type="hidden" value="<?php echo $_SESSION["user_id"] ?>" name="user_ID">
+
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Amont Paid:</label>
@@ -134,7 +136,7 @@
                                         <label>Payment Type:</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="payment_type" checked="checked" value="2">
+                                                <input type="radio" name="payment_type" checked="checked" value="1">
                                                 <span></span>
                                                 Service Charge
                                             </label>
@@ -144,12 +146,12 @@
                                                 Property
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="payment_type" value="2">
+                                                <input type="radio" name="payment_type" value="3">
                                                 <span></span>
                                                 Plot
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="payment_type" value="2">
+                                                <input type="radio" name="payment_type" value="4">
                                                 <span></span>
                                                 Rent
                                             </label>

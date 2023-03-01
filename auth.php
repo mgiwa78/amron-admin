@@ -89,11 +89,7 @@ License: You must have a valid license purchased only from themeforest(the above
               </div>
               <input type="submit" name="UserSignInAuth" id="kt_login_signin_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4" value="Sign In">
             </form>
-            <div class="mt-10">
-              <span class="opacity-70 mr-4">
-                Don't have an account yet?
-              </span>
-            </div>
+
           </div>
           <!--end::Login Sign in form-->
 

@@ -92,6 +92,7 @@
                                         </div>
                                         <span class="form-text text-muted">Please enter total amont paid</span>
                                     </div>
+                                    <input type="hidden" value="<?php echo $_SESSION["user_id"] ?>" name="user_ID">
 
                                     <div class="col-lg-6">
                                         <label>Payment Type:</label>

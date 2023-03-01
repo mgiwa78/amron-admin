@@ -1,10 +1,13 @@
 <?php
+include("../update/UpdateActivityStack.php");
+
 global  $error;
 $GLOBALS["error"] = "";
 
 
 
 function CreateNewUser(
+    $Creator_User_id,
     $user_ID,
     $user_f_name,
     $user_l_name,
@@ -52,6 +55,11 @@ function CreateNewUser(
                     )";
 
     if (mysqli_query($mysqli, $query)) {
+        AddNewActivity(
+            $Creator_User_id,
+            "USER_PROFILE_CREATION",
+            $user_ID,
+        );
         return "Success";
     } else {
         return "Error";

@@ -72,6 +72,7 @@
                                         <input name="tenant_id" type="text" value="<?php echo uniqid('Tid'); ?>" class="form-control" placeholder="Enter Tenant ID">
                                         <span class="form-text text-muted">Please tenant ID</span>
                                     </div>
+                                    <input type="hidden" value="<?php echo $_SESSION["user_id"] ?>" name="user_ID">
                                     <div class="col-lg-3">
                                         <label>Tenant First Name:</label>
                                         <input name="tenant_f_name" type="text" class="form-control" placeholder="Enter First Name">

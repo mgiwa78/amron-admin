@@ -66,7 +66,6 @@
                                 $AllPhaseData = FetchAllPhaseData();
                                 $plotData = FetchPlotByID($plotID);
                                 $plot_Typology = $plotData["plot_typology"];
-                                print_r($plotData);
                                 ?>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
@@ -78,6 +77,8 @@
                                         </div>
                                         <span class=" form-text text-muted">Please select installment type</span>
                                     </div>
+                                    <input type="hidden" value="<?php echo $_SESSION["user_id"] ?>" name="user_ID">
+
                                     <div class="col-lg-6">
                                         <label>Property house Typology:</label>
                                         <select name="plot_house_typology" class="form-control select2" id="kt_select2_2" name="param">
@@ -174,7 +175,7 @@
                                     <div class="col-lg-8">
                                         <input type="submit" name="UpdatePlotSubmit" class="btn btn-primary mr-2" value="Submit">
 
-                                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                                        <a href="./?action=allPlots" type="reset" class="btn btn-secondary">Cancel</a>
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
                                             Delete
                                         </button>

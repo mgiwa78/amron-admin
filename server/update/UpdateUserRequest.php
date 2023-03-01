@@ -4,7 +4,8 @@ $GLOBALS["error"] = "";
 
 
 
-function CreateNewUser(
+function UpdateUser(
+    $editor_user_ID,
     $user_ID,
     $user_f_name,
     $user_l_name,
@@ -39,6 +40,11 @@ function CreateNewUser(
     user_id='$user_ID'";
 
     if (mysqli_query($mysqli, $query)) {
+        AddNewActivity(
+            $editor_user_ID,
+            "USER_PROFILE_MODIFICATION",
+            $user_ID,
+        );
         return "Success";
     } else {
         return "Error";

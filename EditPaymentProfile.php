@@ -85,6 +85,8 @@
                                         <input value="<?php echo $profileData["client_f_name"]; ?>" name="client_f_name" type="text" class="form-control" placeholder="Enter client first name">
                                         <span class="form-text text-muted">Please enter client first name</span>
                                     </div>
+                                    <input type="hidden" value="<?php echo $_SESSION["user_id"] ?>" name="user_ID">
+
                                     <div class="col-lg-4">
                                         <label>Client Last Name:</label>
                                         <input name="client_l_name" value="<?php echo $profileData["client_l_name"]; ?>" type="text" class="form-control" placeholder="Enter client lirst name">
@@ -166,7 +168,7 @@
                                     <div class="col-lg-8">
                                         <input type="submit" name="UpdatePaymentProfileSubmit" class="btn btn-primary mr-2" value="Submit">
 
-                                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                                        <a href="./?action=paymentsProfiles" type="reset" class="btn btn-secondary">Cancel</a>
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
                                             Delete
                                         </button>

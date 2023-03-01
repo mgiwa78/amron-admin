@@ -1,10 +1,13 @@
 <?php
 global  $error;
 $GLOBALS["error"] = "";
+include("../update/UpdateActivityStack.php");
 
 
 
 function UpdatePaymentProfile(
+    $user_id,
+
     $client_payment_id,
     $client_f_name,
     $client_l_name,
@@ -33,6 +36,11 @@ function UpdatePaymentProfile(
      WHERE client_payment_id='$client_payment_id'";
 
     if (mysqli_query($mysqli, $query)) {
+        AddNewActivity(
+            $user_id,
+            "PAYMENT_PROFILE_MODIFICATION",
+            $client_payment_id
+        );
     } else {
         $GLOBALS["error"]  = "Error Occured";
     }

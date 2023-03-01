@@ -102,6 +102,7 @@
                                             <span><i class="flaticon2-search-1 text-muted"></i></span>
                                         </div>
                                     </div>
+                                    <input type="hidden" value="<?php echo $_SESSION["user_id"] ?>" name="user_ID">
 
                                     <div class="col-md-4 my-2 my-md-0">
                                         <div class="d-flex align-items-center">

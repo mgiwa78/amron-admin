@@ -31,7 +31,6 @@
              <!--begin::Toolbar-->
              <?php
                 include("./components/signInTime.php");
-                include("./server/get/fetchDashBoardData.php");
                 ?>
              <!--end::Toolbar-->
          </div>
@@ -302,202 +301,84 @@
                              </h3>
                          </div>
                          <!--end::Header-->
-
+                         <!--Page content goes here...-->
                          <!--begin::Body-->
                          <div class="card-body pt-0">
                              <!--begin::Item-->
-                             <div class="mb-6">
-                                 <!--begin::Content-->
-                                 <div class="d-flex align-items-center flex-grow-1">
-                                     <!--begin::Checkbox-->
-                                     <label class="checkbox checkbox-lg checkbox-lg flex-shrink-0 mr-4">
-                                         <input type="checkbox" value="1" />
-                                         <span></span>
-                                     </label>
-                                     <!--end::Checkbox-->
+                             <!--begin::Info-->
+                             <?php
+                                $ActivitiesID = ActivityStack();
+                                ?>
+                             <?php
+                                foreach ($ActivitiesID as $key => $activity) {
+                                    $typeColour = array(0 => "primary", 1 => "success", 2 => "dark", 3 => "warning", 4 => "info");
+                                    $activityData = ActivityStackByID($activity[0]);
+                                    $performedByName = FetchUserProfileByID($activityData['activity_by']);
 
-                                     <!--begin::Section-->
-                                     <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
-                                         <!--begin::Info-->
-                                         <div class="d-flex flex-column align-items-cente py-2 w-75">
-                                             <!--begin::Title-->
-                                             <span class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">
-                                                 Added new property
-                                             </span>
-                                             <!--end::Title-->
+                                    $parsedActivity = parseActivity(
+                                        $activityData
+                                    );
+                                    // $activityData = parseActivity(
+                                    //     $activity_data_id,
+                                    //     $date_performed,
+                                    //     $activity_by,
+                                    //     $activity_type,
+                                    //     $activity_id
+                                    // );
 
-                                             <!--begin::Data-->
-                                             <span class="text-muted font-weight-bold">
-                                                 2 Days ago
-                                             </span>
-                                             <!--end::Data-->
+                                ?>
+                                 <div class="mb-6">
+                                     <!--begin::Content-->
+                                     <div class="d-flex align-items-center flex-grow-1">
+                                         <!--begin::Checkbox-->
+                                         <label class="checkbox checkbox-lg checkbox-lg flex-shrink-0 mr-4">
+                                             <input type="checkbox" checked disabled value="0" />
+                                             <span></span>
+                                         </label>
+                                         <!--end::Checkbox-->
+
+                                         <!--begin::Section-->
+                                         <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
+
+                                             <div class="d-flex flex-column align-items-cente py-2 w-75">
+                                                 <!--begin::Title-->
+                                                 <span class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">
+                                                     <?php echo $parsedActivity[0] ?>
+                                                 </span>
+                                                 <!--end::Title-->
+
+                                                 <!--begin::Data-->
+                                                 <span class="text-muted  font-weight-bolder">
+                                                     By <?php echo $performedByName['user_l_name']; ?>
+
+                                                 </span>
+                                                 <span class="text-muted font-weight-bold">
+                                                     2 Days ago
+                                                 </span>
+
+                                                 <!--end::Data-->
+
+                                             </div>
+                                             <span class="label label-lg label-light-<?php echo $typeColour[$parsedActivity[1]] ?> label-inline font-weight-bold py-4"><?php echo $parsedActivity[2] ?></span>
+
                                          </div>
-                                         <!--end::Info-->
-
-                                         <!--begin::Label-->
-                                         <span class="label label-lg label-light-primary label-inline font-weight-bold py-4">Approved</span>
-                                         <!--end::Label-->
+                                         <!--end::Section-->
                                      </div>
-                                     <!--end::Section-->
+                                     <!--end::Content-->
                                  </div>
-                                 <!--end::Content-->
-                             </div>
+                             <?php
+                                }
+                                ?>
+
+                             <!--end::Info-->
+
+                             <!--begin::Label-->
+                             <!--end::Label-->
+
                              <!--end::Item-->
 
                              <!--begin::Item-->
-                             <div class="mb-6">
-                                 <!--begin::Content-->
-                                 <div class="d-flex align-items-center flex-grow-1">
-                                     <!--begin::Checkbox-->
-                                     <label class="checkbox checkbox-lg checkbox-lg flex-shrink-0 mr-4">
-                                         <input type="checkbox" value="1" />
-                                         <span></span>
-                                     </label>
-                                     <!--end::Checkbox-->
 
-                                     <!--begin::Section-->
-                                     <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
-                                         <!--begin::Info-->
-                                         <div class="d-flex flex-column align-items-cente py-2 w-75">
-                                             <!--begin::Title-->
-                                             <span class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">
-                                                 Uploaded new plot
-                                             </span>
-                                             <!--end::Title-->
-
-                                             <!--begin::Data-->
-                                             <span class="text-muted font-weight-bold">
-                                                 2 mins ago
-                                             </span>
-                                             <!--end::Data-->
-                                         </div>
-                                         <!--end::Info-->
-
-                                         <!--begin::Label-->
-                                         <span class="label label-lg label-light-warning label-inline font-weight-bold py-4">In Progress</span>
-                                         <!--end::Label-->
-                                     </div>
-                                     <!--end::Section-->
-                                 </div>
-                                 <!--end::Content-->
-                             </div>
-                             <!--end::Item-->
-
-                             <!--begin::Item-->
-                             <div class="mb-6">
-                                 <!--begin::Content-->
-                                 <div class="d-flex align-items-center flex-grow-1">
-                                     <!--begin::Checkbox-->
-                                     <label class="checkbox checkbox-lg checkbox-lg flex-shrink-0 mr-4">
-                                         <input type="checkbox" value="1" />
-                                         <span></span>
-                                     </label>
-                                     <!--end::Checkbox-->
-
-                                     <!--begin::Section-->
-                                     <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
-                                         <!--begin::Info-->
-                                         <div class="d-flex flex-column align-items-cente py-2 w-75">
-                                             <!--begin::Title-->
-                                             <span class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">
-                                                 Created new tnat profile
-                                             </span>
-                                             <!--end::Title-->
-
-                                             <!--begin::Data-->
-                                             <span class="text-muted font-weight-bold">
-                                                 1 hr ago
-                                             </span>
-                                             <!--end::Data-->
-                                         </div>
-                                         <!--end::Info-->
-
-                                         <!--begin::Label-->
-                                         <span class="label label-lg label-light-success label-inline font-weight-bold py-4">Success</span>
-                                         <!--end::Label-->
-                                     </div>
-                                     <!--end::Section-->
-                                 </div>
-                                 <!--end::Content-->
-                             </div>
-                             <!--end::Item-->
-
-                             <!--begin::Item-->
-                             <div class="mb-6">
-                                 <!--begin::Content-->
-                                 <div class="d-flex align-items-center flex-grow-1">
-                                     <!--begin::Checkbox-->
-                                     <label class="checkbox checkbox-lg checkbox-lg flex-shrink-0 mr-4">
-                                         <input type="checkbox" value="1" />
-                                         <span></span>
-                                     </label>
-                                     <!--end::Checkbox-->
-
-                                     <!--begin::Section-->
-                                     <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
-                                         <!--begin::Info-->
-                                         <div class="d-flex flex-column align-items-cente py-2 w-75">
-                                             <!--begin::Title-->
-                                             <span class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">
-                                                 Updated tenat Profile
-                                             </span>
-                                             <!--end::Title-->
-
-                                             <!--begin::Data-->
-                                             <span class="text-muted font-weight-bold">
-                                                 2 hrs ago
-                                             </span>
-                                             <!--end::Data-->
-                                         </div>
-                                         <!--end::Info-->
-
-                                         <!--begin::Label-->
-                                         <span class="label label-lg label-light-danger label-inline font-weight-bold py-4">Rejected</span>
-                                         <!--end::Label-->
-                                     </div>
-                                     <!--end::Section-->
-                                 </div>
-                                 <!--end::Content-->
-                             </div>
-                             <!--end: Item-->
-
-                             <!--begin: Item-->
-                             <div class="">
-                                 <!--begin::Content-->
-                                 <div class="d-flex align-items-center flex-grow-1">
-                                     <!--begin::Checkbox-->
-                                     <label class="checkbox checkbox-lg checkbox-lg flex-shrink-0 mr-4">
-                                         <input type="checkbox" value="1" />
-                                         <span></span>
-                                     </label>
-                                     <!--end::Checkbox-->
-
-                                     <!--begin::Section-->
-                                     <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
-                                         <!--begin::Info-->
-                                         <div class="d-flex flex-column align-items-cente py-2 w-75">
-                                             <!--begin::Title-->
-                                             <span class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">
-                                                 Added new user
-                                             </span>
-                                             <!--end::Title-->
-
-                                             <!--begin::Data-->
-                                             <span class="text-muted font-weight-bold">
-                                                 4 hrs ago
-                                             </span>
-                                             <!--end::Data-->
-                                         </div>
-                                         <!--end::Info-->
-
-                                         <!--begin::Label-->
-                                         <span class="label label-lg label-light-warning label-inline font-weight-bold py-4">In Progress</span>
-                                         <!--end::Label-->
-                                     </div>
-                                     <!--end::Section-->
-                                 </div>
-                                 <!--end::Content-->
-                             </div>
                              <!--end: Item-->
                          </div>
                          <!--end: Card Body-->

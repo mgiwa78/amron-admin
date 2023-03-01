@@ -88,6 +88,8 @@
                                         <input value="<?php echo $TenantData["tenant_f_name"]; ?>" name="tenant_f_name" type="text" class="form-control" placeholder="Enter First Name">
                                         <span class=" form-text text-muted">Please Enter First Name</span>
                                     </div>
+                                    <input type="hidden" value="<?php echo $_SESSION["user_id"] ?>" name="user_ID">
+
                                     <div class="col-lg-3">
                                         <label>Tenant Last Name:</label>
                                         <input value="<?php echo $TenantData["tenant_l_name"]; ?>" name="tenant_l_name" type="text" class="form-control" placeholder="Enter Last Name">
@@ -188,7 +190,7 @@
                                     <div class="col-lg-8">
                                         <input type="submit" name="UpdateTenantProfileSubmit" class="btn btn-primary mr-2" value="Submit">
 
-                                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                                        <a href="./?action=allTenants" type="reset" class="btn btn-secondary">Cancel</a>
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
                                             Delete
                                         </button>

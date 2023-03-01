@@ -7,6 +7,7 @@ $GLOBALS["error"] = "";
 function DeleteProperty(
     $property_id,
     $property_type,
+    $user_ID
 
 ) {
 
@@ -44,6 +45,11 @@ function DeleteProperty(
                     WHERE property_id = $property_id";
 
             if (mysqli_query($mysqli, $saleQuery)) {
+                AddNewActivity(
+                    $user_ID,
+                    "PROPERTY_DELETION",
+                    $property_id,
+                );
                 return "Success";
             }
         }

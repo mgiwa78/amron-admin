@@ -3,6 +3,7 @@ global  $error;
 $GLOBALS["error"] = "";
 
 function UpdateTenantProfile(
+    $user_ID,
     $tenant_id,
     $tenant_f_name,
     $property_phase,
@@ -32,6 +33,11 @@ function UpdateTenantProfile(
         tenant_id='$tenant_id'";
 
     if (mysqli_query($mysqli, $query)) {
+        AddNewActivity(
+            $user_ID,
+            "TENANT_PROFILE_MODIFICATION",
+            $tenant_id,
+        );
     } else {
         $GLOBALS["error"]  = "Error Occured";
     }

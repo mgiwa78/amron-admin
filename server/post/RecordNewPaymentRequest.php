@@ -5,6 +5,7 @@ $GLOBALS["error"] = "";
 
 
 function RecordNewPayment(
+    $user_ID,
     $client_f_name,
     $client_l_name,
     $amount_paid,
@@ -42,6 +43,13 @@ function RecordNewPayment(
                     '$plot_location_tags')";
 
     if (mysqli_query($mysqli, $query)) {
+        $paymentID = mysqli_insert_id($mysqli);
+
+        AddNewActivity(
+            $user_ID,
+            "PAYMENT_RECORDING",
+            $paymentID,
+        );
     } else {
         $GLOBALS["error"]  = "Error Occured";
     }

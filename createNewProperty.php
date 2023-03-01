@@ -92,16 +92,18 @@
 
                                         </select>
                                     </div>
+                                    <input type="hidden" value="<?php echo $_SESSION["user_id"] ?>" name="user_ID">
+
                                     <div class="col-lg-6">
                                         <label>Property Type:</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="property_type" value="1">
+                                                <input type="radio" name="property_type" value="2">
                                                 <span></span>
                                                 For Rent
                                             </label>
                                             <label class="radio radio-solid">
-                                                <input type="radio" name="property_type" value="2">
+                                                <input type="radio" name="property_type" value="1">
                                                 <span></span>
                                                 For Sale
                                             </label>

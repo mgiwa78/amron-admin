@@ -1,10 +1,13 @@
 <?php
+
+include("../update/UpdateActivityStack.php");
 global  $error;
 $GLOBALS["error"] = "";
 
 
 
 function UpdatePlot(
+    $user_ID,
     $plot_id,
     $plot_house_typology,
     $plot_sale_price,
@@ -33,9 +36,14 @@ function UpdatePlot(
                     `plot_status`='Available',
                     `web_display`='$plot_web_display'
                 WHERE 
-                    plot_id= $plot_id";
+                    plot_id= '$plot_id'";
 
     if (mysqli_query($mysqli, $query)) {
+        AddNewActivity(
+            $user_ID,
+            "PLOT_MODIFICATION",
+            $plot_id,
+        );
     } else {
         $GLOBALS["error"]  = "Error Occured";
     }

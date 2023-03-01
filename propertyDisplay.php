@@ -63,7 +63,7 @@
                         </div>
 
                         <!--begin::Form-->
-                        <form id="kt_form_1" class="form" method="POST" action="./server/form/handleUpdateProperty.php">
+                        <form enctype="multipart/form-data" id="kt_form_1" class="form" method="POST" action="./server/form/handleUpdateProperty.php">
                             <div class="card-body">
                                 <?php
                                 include("./components/alertHandler.php");
@@ -75,6 +75,7 @@
 
                                 $Property_ID = $_GET["PropID"];
                                 $propertyData = FetchPropertiesByID($Property_ID);
+                                $propertyImages = explode("#**#", FetchPropertyImages($Property_ID));
                                 // print_r($propertyData);
 
                                 if ($propertyData) {
@@ -104,6 +105,8 @@
                                         <input value="<?php echo  $propertyData["type_data"] ?>" name="type_data_id" type="number" readonly class="form-control" placeholder="Data ID" />
 
                                     </div>
+                                    <input type="hidden" value="<?php echo $_SESSION["user_id"] ?>" name="user_ID">
+
                                     <div class="col-lg-6">
                                         <label>Property Typology:</label>
                                         <span class="font-weight-bold"><?php echo $propTypology["type_name"] ?></span>
@@ -295,6 +298,12 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-lg-6">
+                                        <input type="file" name="images[]" multiple />
+                                        <input type="submit" name="UploadImage" class="btn btn-primary mr-2" value="Submit">
+
+                                    </div>
+
 
 
                                     <!-- begin: Example Code-->
@@ -307,7 +316,7 @@
                                         <div class="col-lg-8">
                                             <input type="submit" name="createPropertySubmit" class="btn btn-primary mr-2" value="Submit">
 
-                                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                                            <a href="./?action=allProperties" type="reset" class="btn btn-secondary">Cancel</a>
 
                                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
                                                 Delete
@@ -340,7 +349,59 @@
                         </form>
                         <!--end::Form-->
                     </div>
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h3 class="card-label">Property Images</h3>
+                            </div>
 
+                        </div>
+                        <!--begin::Form-->
+                        <form id="kt_form_1" class="form" method="POST" action="./server/form/handleUpdateProperty.php">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <div class="form-group row">
+                                        <?php
+
+                                        if (count($propertyImages) !== 1) {
+                                            foreach ($propertyImages as $key => $propertyImage) {
+                                                # code...
+                                                if ($key > 0) {
+
+                                        ?>
+                                                    <div class="col-lg-2 col-xl-4">
+                                                        <div class="image-input image-input-outline" id="kt_image_1">
+                                                            <div class="image-input-wrapper" style="background-image: url(images/<?php echo $Property_ID . "/" . $propertyImage ?>)"></div>
+                                                            <input type="submit" name="DeletePropertyImage" class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" style="margin-bottom: 2px;" value="x" />
+                                                            <input type="text" value="<?php echo $propertyImage ?>" hidden name="image_name" />
+                                                            <input type="text" value="<?php echo $Property_ID ?>" hidden name="property_id" />
+
+                                                        </div>
+                                                        <span class="form-text text-muted"><?php echo  $propertyImage ?></span>
+                                                    </div>
+                                            <?php
+                                                }
+                                            }
+                                        } else {
+                                            ?>
+                                            <div class="text-muted p-15 h5">Not Images Uploaded</div>
+                                        <?php
+                                        }
+
+
+
+                                        ?>
+
+                                    </div>
+
+                                </div>
+
+                                <!--begin::Code-->
+
+                                <!--end::Code-->
+                            </div>
+                        </form>
+                    </div>
                     <!--end::Card-->
 
                     <!--begin::Card-->
@@ -351,5 +412,6 @@
         </div>
         <!--end::Container-->
     </div>
+
     <!--end::Entry-->
 </div>

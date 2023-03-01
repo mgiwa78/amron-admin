@@ -1,10 +1,8 @@
 <?php
-global  $error;
-$GLOBALS["error"] = "";
-
-
+include("../update/UpdateActivityStack.php");
 
 function CreateNewPlot(
+    $user_id,
     $plot_house_typology,
     $plot_sale_price,
     $plot_phase,
@@ -40,6 +38,13 @@ function CreateNewPlot(
                     )";
 
     if (mysqli_query($mysqli, $query)) {
+        $plotID = mysqli_insert_id($mysqli);
+
+        AddNewActivity(
+            $user_id,
+            "PLOT_CREATION",
+            $plotID,
+        );
     } else {
         $GLOBALS["error"]  = "Error Occured";
     }

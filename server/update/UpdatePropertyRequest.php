@@ -1,10 +1,13 @@
 <?php
+include("../update/UpdateActivityStack.php");
+
 global  $error;
 $GLOBALS["error"] = "";
 
 
 
 function UpdateProperty(
+    $user_ID,
     $property_id,
     $property_location_tags,
     $property_typology,
@@ -37,7 +40,7 @@ function UpdateProperty(
                     `type_id`='$property_type',
                     `web_display`='$property_web_display',
                     `available`='$property_availability'
-            WHERE property_id = $property_id";
+            WHERE property_id = '$property_id'";
 
     if (mysqli_query($mysqli, $query)) {
 
@@ -51,9 +54,14 @@ function UpdateProperty(
             SET 
                 `rental_price`='$property_rent_price',
                 `rental_installment`='$property_rent_installment'
-            WHERE  property_id=$property_id";
+            WHERE  property_id='$property_id'";
 
             if (mysqli_query($mysqli, $rentQuery)) {
+                AddNewActivity(
+                    $user_ID,
+                    "PROPERTY_MODIFICATION",
+                    $property_id,
+                );
                 return "Success";
             }
         }
@@ -66,9 +74,14 @@ function UpdateProperty(
                                 `sale_properties` 
                             SET 
                                 `sale_property_price`='$property_sale_price'
-                            WHERE property_id = $property_id";
+                            WHERE property_id = '$property_id'";
 
             if (mysqli_query($mysqli, $saleQuery)) {
+                AddNewActivity(
+                    $user_ID,
+                    "PROPERTY_MODIFICATION",
+                    $property_id,
+                );
                 return "Success";
             }
         }
@@ -78,4 +91,57 @@ function UpdateProperty(
 
     if ($GLOBALS["error"]  === "")
         return "Success";
+}
+function UploadPropertyImage(
+    $file_name,
+    $property_id,
+) {
+    $mysqli = new mysqli("localhost", "root", "", "amron");
+
+        // Check connection
+    ;
+    $prevPictures =  explode("#**#", mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT * FROM `properties` WHERE property_id = $property_id"))["property_pictures"]);
+    print_r($prevPictures);
+    if (in_array($file_name, $prevPictures)) return;
+    else {
+        $newPictures = join("#**#", $prevPictures) . "#**#" . $file_name;
+    }
+
+    $query = "UPDATE 
+                    `properties`    
+                SET 
+                    `property_pictures`='$newPictures'
+
+            WHERE property_id = '$property_id'";
+
+    if (mysqli_query($mysqli, $query)) {
+    };
+}
+function DeletePropertyImage(
+    $file_name,
+    $property_id,
+) {
+    $mysqli = new mysqli("localhost", "root", "", "amron");
+
+        // Check connection
+    ;
+    $prevPictures =  explode("#**#", mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT * FROM `properties` WHERE property_id = $property_id"))["property_pictures"]);
+
+    if (($key = array_search($file_name, $prevPictures)) !== false) {
+        unset($prevPictures[$key]);
+    }
+    // if (in_array($file_name, $prevPictures)) return;
+    // else {
+    //     $newPictures = join("#**#", $prevPictures) . "#**#" . $file_name;
+    // }
+    $newPictures = join("#**#", $prevPictures);
+    $query = "UPDATE 
+                    `properties`    
+                SET 
+                    `property_pictures`='$newPictures'
+
+            WHERE property_id = '$property_id'";
+
+    if (mysqli_query($mysqli, $query)) {
+    };
 }

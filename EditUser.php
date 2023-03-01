@@ -76,6 +76,8 @@
                                         <input value="<?php echo substr($UserID, 0, 6) ?>" readonly name="user" type="text" class="form-control" placeholder="User ID number">
                                         <span class="form-text text-muted">Please User ID</span>
                                     </div>
+                                    <input type="hidden" value="<?php echo $_SESSION["user_id"] ?>" name="editor_user_ID">
+
                                     <div class="col-lg-4">
                                         <label>User Position:</label>
                                         <input value="<?php echo $userData["user_position"] ?>" name="user_position" type="text" class="form-control" placeholder="Position">
@@ -146,7 +148,7 @@
                                     <div class="col-lg-8">
                                         <input type="submit" name="UpdateUserSubmit" class="btn btn-primary mr-2" value="Submit">
 
-                                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                                        <a href="./?action=allUsers" type="reset" class="btn btn-secondary">Cancel</a>
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
                                             Delete
                                         </button>

@@ -1,10 +1,12 @@
 <?php
+include("../update/UpdateActivityStack.php");
 global  $error;
 $GLOBALS["error"] = "";
 
 
 
 function CreateNewProperty(
+    $user_ID,
     $property_location_tags,
     $property_typology,
     $property_type,
@@ -73,7 +75,13 @@ function CreateNewProperty(
 
                                 WHERE property_id=$property_id";
 
-                mysqli_query($mysqli, $updateQuery);
+                if (mysqli_query($mysqli, $updateQuery)) {
+                    AddNewActivity(
+                        $user_ID,
+                        "RENT_PROPERTY_CREATION",
+                        $property_id,
+                    );
+                };
             } else {
                 $GLOBALS["error"] = "Error Occured";
             };
@@ -101,7 +109,13 @@ function CreateNewProperty(
                                     `type_data`='$sale_id'
                                 WHERE property_id=$property_id";
 
-                mysqli_query($mysqli, $updateQuery);
+                if (mysqli_query($mysqli, $updateQuery)) {
+                    AddNewActivity(
+                        $user_ID,
+                        "SALE_PROPERTY_CREATION",
+                        $property_id,
+                    );
+                };
             } else {
                 $GLOBALS["error"]  = "Error Occured";
             }

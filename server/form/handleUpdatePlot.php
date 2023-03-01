@@ -22,6 +22,7 @@ if (isset($_POST["UpdatePlotSubmit"])) {
     $plot_sale_price = $_POST["plot_sale_price"];
     $plot_phase = $_POST["plot_phase"];
     $plot_installment = $_POST["plot_installment"];
+    $user_ID = $_POST["user_ID"];
     $plot_size = $_POST["plot_lenght"] . "X" . $_POST["plot_breadth"];
 
     $plot_location_tags = $plot_location_tags;
@@ -32,6 +33,7 @@ if (isset($_POST["UpdatePlotSubmit"])) {
 
 
     $request = UpdatePlot(
+        $user_ID,
         $plot_id,
         $plot_house_typology,
         $plot_sale_price,
@@ -55,8 +57,9 @@ if (isset($_POST["UpdatePlotSubmit"])) {
 }
 if (isset($_POST["DeletePlot"])) {
     $plot_id = $_POST["plot_id"];
+    $user_ID = $_POST["user_ID"];
 
-    $request = DeletePlot($plot_id);
+    $request = DeletePlot($plot_id, $user_ID);
     if ($request === "Success") {
 
         $_SESSION["action_success"] = "Plot Deleted Successfully";

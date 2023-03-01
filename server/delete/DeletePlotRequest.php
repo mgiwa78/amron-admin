@@ -6,6 +6,7 @@ $GLOBALS["error"] = "";
 
 function DeletePlot(
     $plot_id,
+    $user_ID,
 ) {
     $mysqli = new mysqli("localhost", "root", "", "amron");
 
@@ -15,7 +16,11 @@ function DeletePlot(
     WHERE plot_id = $plot_id";
 
     if (mysqli_query($mysqli, $query)) {
-        return "Error";
+        AddNewActivity(
+            $user_ID,
+            "PLOT_DELETION",
+            $plot_id,
+        );
     }
 
     if ($GLOBALS["error"]  === "")

@@ -15,6 +15,7 @@ if (isset($_POST["UpdateTenantProfileSubmit"])) {
     //     $i++;
     // }
 
+    $user_ID = $_POST["user_ID"];
     $tenant_id = $_POST["tenant_id"];
     $tenant_f_name = $_POST["tenant_f_name"];
     $property_phase = $_POST["property_phase"];
@@ -32,6 +33,7 @@ if (isset($_POST["UpdateTenantProfileSubmit"])) {
     $property_location = $_POST["property_location"];
 
     $request = UpdateTenantProfile(
+        $user_ID,
         $tenant_id,
         $tenant_f_name,
         $property_phase,
@@ -56,8 +58,9 @@ if (isset($_POST["UpdateTenantProfileSubmit"])) {
 if (isset($_POST["DeleteTenantProfile"])) {
 
     $tenant_id = $_POST["tenant_id"];
+    $user_ID = $_POST["user_ID"];
 
-    $request = DeleteTenantProfile($tenant_id);
+    $request = DeleteTenantProfile($tenant_id, $user_ID);
     if ($request === "Success") {
 
         $_SESSION["action_success"] = "Tenant Profile Deleted Successfully";
