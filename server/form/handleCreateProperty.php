@@ -45,16 +45,16 @@ if (isset($_POST["createPropertySubmit"])) {
             $property_bathroom_amount
         );
 
-        // echo  $property_sale_price . "###" . $property_rent_price;
-        // if ($request === "Success") {
+        echo  $property_sale_price . "###" . $property_rent_price;
+        if ($request === "Success") {
 
-        //     $_SESSION["action_success"] = "Property Uploaded Successfully";
-        //     header("Location: ../../?action=createProperty");
-        // }
-        // if ($request !== "Success") {
+            $_SESSION["action_success"] = "Property Uploaded Successfully";
+            header("Location: ../../?action=createProperty");
+        }
+        if ($request !== "Success") {
 
-        //     $_SESSION["action_fail"] = "Property Failed To Uploaded Successfully";
-        //     header("Location: ../../?action=createProperty");
-        // }
+            $_SESSION["action_fail"] = "Property Failed To Uploaded Successfully";
+            header("Location: ../../?action=createProperty");
+        }
     }
 }

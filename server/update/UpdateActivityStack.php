@@ -1,33 +1,33 @@
-<?php
-include("../constants/ACTIVITY_TYPES.php");
+<!-- <?php
+        include("../constants/ACTIVITY_TYPES.php");
 
 
 
-function AddNewActivity(
-    $user_ID,
-    $tack_Typ,
-    $activity_data_id
-) {
+        function AddNewActivity(
+            $user_ID,
+            $tack_Typ,
+            $activity_data_id
+        ) {
 
 
 
 
-    // $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, $options);
-    $mysqli = new mysqli("localhost", "root", "", "amron");
+            // $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, $options);
+            $mysqli = new mysqli("localhost", "root", "", "amron");
 
-    // Check connection
-    // $preQuery = "SELECT `user_email` FROM `users` WHERE user_email='$user_email'";
+            // Check connection
+            // $preQuery = "SELECT `user_email` FROM `users` WHERE user_email='$user_email'";
 
-    // if (mysqli_num_rows(mysqli_query($mysqli, $preQuery))) {
-    //     return "Email Exists";
-    // } else {
-    //     $GLOBALS["error"]  = "Error Occured";
-    // }
-    $now_in_seconds = time();
-    $date_created = date("Y-m-d H:i:s");
-    # For Property Creation...
-    $activityTypeID = ReturnActivityID($tack_Typ);
-    $query = "INSERT INTO 
+            // if (mysqli_num_rows(mysqli_query($mysqli, $preQuery))) {
+            //     return "Email Exists";
+            // } else {
+            //     $GLOBALS["error"]  = "Error Occured";
+            // }
+            $now_in_seconds = time();
+            $date_created = date("Y-m-d H:i:s");
+            # For Property Creation...
+            $activityTypeID = ReturnActivityID($tack_Typ);
+            $query = "INSERT INTO 
                 `ativity_stack`
                     (
                     `activity_by`, 
@@ -41,12 +41,12 @@ function AddNewActivity(
                     '$activity_data_id',
                     '$date_created')";
 
-    if (mysqli_query($mysqli, $query)) {
-        return "Success";
-    } else {
-        return "Error";
-    }
-}
+            if (mysqli_query($mysqli, $query)) {
+                return "Success";
+            } else {
+                return "Error";
+            }
+        }
 
 
 
@@ -137,4 +137,4 @@ function AddNewActivity(
     //     default:
     //         # code...
     //         break;
-    // }
+    // } -->

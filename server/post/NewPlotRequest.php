@@ -45,10 +45,9 @@ function CreateNewPlot(
             "PLOT_CREATION",
             $plotID,
         );
-    } else {
-        $GLOBALS["error"]  = "Error Occured";
     }
-
-    if ($GLOBALS["error"]  === "")
+    if (mysqli_query($mysqli, $query))
         return "Success";
+    else {
+    }
 }
