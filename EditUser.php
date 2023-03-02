@@ -34,7 +34,6 @@
                 <!--begin::Actions-->
                 <?php
                 include("./components/signInTime.php");
-                include("./server/get/fetchUserProfiles.php");
 
 
                 ?>

@@ -21,7 +21,7 @@ if (isset($_POST["createNewUserSubmit"])) {
     $user_position = $_POST["user_position"];
     $user_password = $_POST["user_password"];
 
-    if ((int)$_SESSION["user_type_id"] === 0) {
+    if ((int)$_SESSION["user_type_id"] === 1) {
         $_SESSION["action_fail"] = "You Do not Have The Permisson For This Action";
         header("Location: ../../?action=addUser");
     } else {

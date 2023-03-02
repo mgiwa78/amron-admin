@@ -34,7 +34,6 @@
             <div class="d-flex align-items-center">
                 <?php
                 include("./components/signInTime.php");
-                include("./server/get/fetchUserProfiles.php");
 
                 $allUserIds = FetchUserProfileIDs();
                 ?>
@@ -128,11 +127,11 @@
                                             </td>
                                             <td>
                                                 <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
-                                                    <?php echo $UserData["user_type_id"] === "2" ? "High" : ($UserData["user_type_id"] === "1" ? "Mid" : "Low") ?>
+                                                    <?php echo $UserData["user_type_id"] === "1" ? "High" : ($UserData["user_type_id"] === "2" ? "Mid" : "Low") ?>
 
                                                 </span>
                                                 <span class="text-muted font-weight-bold">
-                                                    <?php echo $UserData["user_type_id"] === "2" ? "Super Admin" : ($UserData["user_type_id"] === "1" ? "Admin" : "User") ?>
+                                                    <?php echo $UserData["user_type_id"] === "4" ? "Super Admin" : ($UserData["user_type_id"] === "1" ? "Admin" : "Editor") ?>
                                                 </span>
                                             </td>
 

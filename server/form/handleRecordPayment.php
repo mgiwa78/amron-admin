@@ -5,7 +5,7 @@ include("../update/UpdateActivityStack.php");
 
 
 if (isset($_POST["recordPaymentSubmit"])) {
-    if ((int)$_SESSION["user_type_id"] === 0) {
+    if ((int)$_SESSION["user_type_id"] === 1) {
         $_SESSION["action_fail"] = "You Do not Have The Permisson For This Action";
         header("Location: ../../?action=recordPayment");
     } else {
