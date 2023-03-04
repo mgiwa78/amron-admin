@@ -20,7 +20,10 @@ function RecordNewPayment(
     $mysqli = new mysqli("localhost", "root", "", "amron");
 
     // Check connection
-
+    $prefix = 'Pid-';
+    $suffix = '-2023';
+    $payment_id = uniqid($prefix, true) . $suffix;
+    $payment_id;
 
     $query = "INSERT INTO 
                 `payment`(
@@ -31,7 +34,9 @@ function RecordNewPayment(
                     `payment_date`, 
                     `property_phase`, 
                     `payment_type`, 
-                    `property_location`) 
+                    `payment_id`, 
+                    `property_location`
+                    ) 
                 VALUES (
                     '$client_f_name',
                     '$client_l_name',
@@ -40,6 +45,7 @@ function RecordNewPayment(
                     '$payment_date',
                     '$property_phase',
                     '$payment_type',
+                    '$payment_id',
                     '$plot_location_tags')";
 
     if (mysqli_query($mysqli, $query)) {

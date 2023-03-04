@@ -168,7 +168,7 @@
                                 <tr>
                                     <td><?php echo $propertyData["property_id"]; ?></td>
 
-                                    <td><?php echo $propertyData["type_id"] === "2" ? $propertyTypeData["rental_price"] : $propertyTypeData["sale_property_price"] ?></php>
+                                    <td><?php echo $propertyData["type_id"] === "2" ? number_format($propertyTypeData["rental_price"], 0, '.', ',') : number_format($propertyTypeData["sale_property_price"], 0, '.', ',') ?></php>
                                     </td>
                                     <td><?php echo join(",", explode("#", $propertyData["property_location"]))  ?></php>
                                     </td>

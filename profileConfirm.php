@@ -1,5 +1,12 @@
 <?php
+// Start the session
 session_start();
+
+// Include the Paystack PHP library
+require_once('./server/payment/autoload.php');
+
+// Set your API key
+$paystack = new Yabacon\Paystack('sk_test_d766fc5b40a2b70285c9f52048431c24fe009e17');
 ?>
 <!DOCTYPE html>
 <!--
@@ -61,7 +68,7 @@ License: You must have a valid license purchased only from themeforest(the above
   $id = $_GET["Pid"];
   $PaymentProfile = FetchPaymentProfile($id);
 
-  $paymentTypes = array(1 => "Service Charge", 2 => "Property", 3 => "Plot", 4 => "Rent",)
+  $paymentTypes = array(0 => "Service Charge", 1 => "Property", 2 => "Plot", 3 => "Rent",)
 
   ?>
   <!--begin::Aside-->
@@ -94,11 +101,77 @@ License: You must have a valid license purchased only from themeforest(the above
     </div>
     <div class="card-footer">
       <div class="text-left pt-2">
-        <form id="paymentForm" method="POST" action="./server/payment/verify.php">
-          <input name="refrence" id="refrence" type="hidden">
-          <button id="kt_login_signin_submit" class="btn btn-dark font-weight-bolder font-size-h6 px-8 py-4 my-3" onclick="payWithPaystack()"> Pay </button>
+        <?php
+        if (isset($_SESSION["payment_status"])) {
+          $path = " ";
+        } else {
+          $path = "onclick='payWithPaystack()'";
+        }
+        ?>
+        <?php
+        if (isset($_GET['Pid'])) {
+          $payment_id = $_GET['Pid'];
+          $mysqli = new mysqli("localhost", "root", "", "amron");
 
-        </form>
+          // Fetch the payment amount from the database
+          $stmt = $mysqli->prepare("SELECT amount_to_pay FROM payment_profiles WHERE client_payment_id = ?");
+          $stmt->bind_param("s", $payment_id);
+          $stmt->execute();
+          $result = $stmt->get_result();
+          $row = $result->fetch_assoc();
+          $payment_amount = $row['amount_to_pay'];
+          $stmt->close();
+
+          // Set the payment parameters
+          $payment_data = array(
+            "amount" => $payment_amount * 100, // Paystack requires amount to be in kobo
+            "email" => "customer@example.com", // Customer's email
+            "metadata" => array(
+              "payment_id" => $payment_id, // Payment ID from your database
+            ),
+          );
+
+          // Initialize the payment with Paystack
+          try {
+            $transaction = $paystack->transaction->initialize($payment_data);
+          } catch (Yabacon\Paystack\Exception\ApiException $e) {
+            // Handle the error
+            die($e->getMessage());
+          }
+
+          $payment_form = "<script src='https://js.paystack.co/v1/inline.js'></script>
+        <form id='paymentForm'>
+            <button id='kt_login_signin_submit' class='btn btn-dark font-weight-bolder font-size-h6 px-8 py-4 my-3'  type='button' onclick='payWithPaystack()'>Pay Now</button>
+            </form>
+            <script>
+              function payWithPaystack() {
+                var handler = PaystackPop.setup({
+                  key: 'pk_test_04ce7b3f751546859d4307b453c37740a7bf55ac',
+                  email: 'customer@example.com',
+                  amount: " . $payment_amount * 100 . ",
+                  ref: '" . $transaction->data->reference . "',
+                  metadata: {
+                    payment_id: '" . $payment_id . "',
+                  },
+                  callback: function(response) {
+                      window.location.href = 'verify.php?reference=' + response.reference + '&payment_id=" . $payment_id . "';
+                  },
+                  onClose: function() {
+                      alert('Payment cancelled.');
+                  }
+                });
+                handler.openIframe();
+              }
+            </script>";
+
+          echo $payment_form;
+        } else {
+          // Redirect to the payment page if the payment ID is not set
+          header("Location: paymentID.php");
+          exit();
+        }
+        ?>
+
       </div>
     </div>
   </div>
@@ -107,11 +180,8 @@ License: You must have a valid license purchased only from themeforest(the above
   <!--begin: Aside footer for desktop-->
 
   <!--end: Aside footer for desktop-->
-
   <!--end::Login-->
-
-  <!--end::Main-->
-  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <!-- <script src="https://js.paystack.co/v1/inline.js"></script> -->
   <script>
     var HOST_URL =
       " https://preview.keenthemes.com/metronic/theme/html/tools/preview";
@@ -184,7 +254,7 @@ License: You must have a valid license purchased only from themeforest(the above
   <script src="assets/plugins/global/plugins.bundle.js?v=7.0.6"></script>
   <script src="assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.6"></script>
   <script src="assets/js/scripts.bundle.js?v=7.0.6"></script>
-  <script src="assets/js-mod/paystackForm.js"></script>
+  <!-- <script src="assets/js-mod/paystackForm.js"></script> -->
   <!--end::Global Theme Bundle-->
 
   <!--begin::Page Scripts(used by this page)-->

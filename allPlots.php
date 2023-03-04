@@ -174,7 +174,7 @@
 
                                     <td><?php echo $plotData["plot_size"]  ?></td>
 
-                                    <td><?php echo $plotData["plot_price"]  ?></td>
+                                    <td><?php echo number_format($plotData["plot_price"], 0, '.', ',') ?></td>
                                     <td class="text-left"><?php echo $plotData["plot_typology"]  ?></td>
                                     <td class="text-left"><?php echo $plotData["plot_status"]  ?></td>
                                     <td class="pr-0 text-left">

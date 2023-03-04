@@ -163,8 +163,8 @@
                                     <td><?php echo $PaymentProfileData["client_payment_id"] ?></td>
 
                                     <td><?php echo  $PaymentProfileData["client_f_name"] . " " . $PaymentProfileData["client_l_name"] ?></td>
-                                    <td><?php echo "₦" . $PaymentProfileData["amount_to_pay"] ?></td>
-                                    <td><?php echo "₦" . $PaymentProfileData["amount_paid"] ?></td>
+                                    <td><?php echo "₦" . number_format($PaymentProfileData["amount_to_pay"], 0, '.', ',') ?></td>
+                                    <td><?php echo "₦" . number_format($PaymentProfileData["amount_paid"], 0, '.', ',') ?></td>
                                     <td><?php echo $PaymentProfileData["profile_description"] ?></td>
                                     <td class="text-right"><?php echo $PaymentProfileData["payment_type"] ?></td>
                                     <td class="text-right"><?php echo $PaymentProfileData["profile_status"] ?></td>

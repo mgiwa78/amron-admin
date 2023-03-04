@@ -164,9 +164,10 @@
                                     <td><?php echo $paymentData["payment_id"] ?></td>
                                     <td><?php echo $paymentData["client_l_name"] . " " . $paymentData["client_f_name"] ?></td>
                                     <td><?php echo $paymentData["payment_description"] ?></td>
-                                    <td><?php echo $paymentData["amount_paid"] ?></td>
+                                    <td><?php echo number_format($paymentData["amount_paid"], 0, '.', ',') ?></td>
                                     <td><?php echo $paymentData["payment_date"] ?></td>
-                                    <td><?php echo $paymentData["amount_due"] ?></td>
+                                    <td><?php echo number_format($paymentData["amount_due"], 0, '.', ',') ?></td>
+
                                     <td class="text-right"><?php echo $paymentData["amount_due"] === "0" ? 2 : 1 ?></td>
                                     <td class="text-right"><?php echo $paymentData["payment_type"] ?></td>
                                 </tr>

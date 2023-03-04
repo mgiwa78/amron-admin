@@ -1,4 +1,5 @@
 <?php
+include("../update/UpdateActivityStack.php");
 global  $error;
 $GLOBALS["error"] = "";
 

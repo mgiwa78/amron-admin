@@ -50,19 +50,19 @@ if (isset($_POST["UpdatePaymentProfileSubmit"])) {
             header("Location: ../../?action=ViewPaymentProfile&ProfileID=$client_payment_id");
         }
     }
-    if (isset($_POST["DeletePaymentProfile"])) {
-        $payment_profile_id = $_POST["client_payment_id"];
+}
+if (isset($_POST["DeletePaymentProfile"])) {
+    $payment_profile_id = $_POST["client_payment_id"];
 
-        $request = DeletePaymentProfile($payment_profile_id);
-        if ($request === "Success") {
+    $request = DeletePaymentProfile($payment_profile_id);
+    if ($request === "Success") {
 
-            $_SESSION["action_success"] = "Payment Profile Deleted Successfully";
-            header("Location: ../../?action=paymentsProfiles");
-        }
-        if ($request !== "Success") {
+        $_SESSION["action_success"] = "Payment Profile Deleted Successfully";
+        header("Location: ../../?action=paymentsProfiles");
+    }
+    if ($request !== "Success") {
 
-            $_SESSION["action_fail"] = "Payment Profile Failed To Delete Successfully";
-            header("Location: ../../?action=paymentsProfiles");
-        }
+        $_SESSION["action_fail"] = "Payment Profile Failed To Delete Successfully";
+        header("Location: ../../?action=paymentsProfiles");
     }
 }

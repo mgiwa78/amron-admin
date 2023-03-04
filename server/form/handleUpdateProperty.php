@@ -86,6 +86,7 @@ if (isset($_POST["DeleteProperty"])) {
     }
 }
 if (isset($_FILES['images'])) {
+    if (isset($_POST["DeleteProperty"])) return;
     $property_id = $_POST["property_id"];
 
     $errors = array();

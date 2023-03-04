@@ -56,19 +56,19 @@ var KTDatatableHtmlTableDemo = (function () {
           // callback function support for column rendering
           template: function (row) {
             var status = {
-              1: {
+              0: {
                 title: "Service Charge",
                 state: "danger",
               },
-              2: {
+              1: {
                 title: "Property",
                 state: "primary",
               },
-              3: {
+              2: {
                 title: "Plot",
                 state: "success",
               },
-              4: {
+              3: {
                 title: "Rent",
                 state: "warning",
               },

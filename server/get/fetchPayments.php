@@ -28,7 +28,7 @@ function FetchPaymentByID($property_Id)
                 `payment_description` 
                 FROM 
                     `payment` 
-                WHERE payment_id=$property_Id";
+                WHERE payment_id='$property_Id'";
     $property = mysqli_fetch_assoc(mysqli_query($mysqli, $query));
 
     return $property;
